@@ -21,7 +21,7 @@ export default function Support() {
         <div className={layoutStyles.contentWrapper}>
             <div className={layoutStyles.container}>
                 {/* Hero Section */}
-                <header style={{ marginBottom: '4rem' }}>
+                <header className={styles.heroHeader}>
                     <motion.h1 
                         className={styles.sectionTitle}
                         initial={{ opacity: 0, y: -20 }}

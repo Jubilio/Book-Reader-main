@@ -197,6 +197,19 @@
   border-color: #ff4d4d;
 }
 
+.previewContainer {
+    font-family: var(--preview-font);
+    font-size: var(--preview-size);
+    line-height: var(--preview-line-height);
+    text-align: var(--preview-align);
+    padding: 1rem;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    border: 1px dashed var(--border);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
 @media (max-width: 768px) {
   .settingsGrid {
     grid-template-columns: 1fr;

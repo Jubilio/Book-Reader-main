@@ -120,3 +120,29 @@
     max-width: 65ch;
     margin: 0 auto;
 }
+
+.loader {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-secondary);
+}
+
+.loaderIcon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.errorContainer {
+    text-align: center;
+    padding: 4rem;
+    color: #ed4b4b;
+}
+
+.errorIcon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.errorButton {
+    margin-top: 1rem;
+}

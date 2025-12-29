@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 
 interface UserStats {
   booksWritten: number;
@@ -15,61 +15,87 @@ export interface User {
   mission: string;
   testimony: string;
   stats: UserStats;
+  isAdmin?: boolean;
 }
 
 interface UserContextType {
   user: User;
-  updateUser: (newUser: Partial<User>) => void;
+  updateUser: (newUser: Partial<User>, password?: string) => Promise<{ success: boolean; error?: string }>;
+  setAdmin: (isAdmin: boolean) => void;
+  refreshUser: () => Promise<void>;
 }
 
 const defaultUser: User = {
   name: "Jubílio Maússe",
-  role: "Autor • Servo de Deus • Ceifeiro na Seara",
-  bio: "Servo de Deus, dedicado a trazer a mensagem de arrependimento e volta ao primeiro amor.",
+  role: "Autor • Servo de Deus • Mentor Espiritual",
+  bio: "Servo de Deus, dedicado a guiar almas no caminho da restauração e do primeiro amor.",
   image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400",
-  mission: "Desejo encorajar cada leitor a lembrar-se de onde caiu e a voltar à prática das primeiras obras (Apocalipse 2:5).",
-  testimony: "Em 2015, iniciei meu processo de conversão, um marco eterno em minha vida. Tive uma visão gloriosa de Jesus, onde Ele me chamou de volta para cumprir o propósito que tem para mim desde o ventre da minha mãe. Desde aquele encontro, dedico meus dias à oração, ao estudo da Palavra e a servir como instrumento em Suas mãos.",
+  mission: "Encorajar leitores à restauração espiritual e ao aprofundamento da comunhão com o Criador através da Palavra.",
+  testimony: "Minha jornada começou em 2015, após um encontro transformador com a Graça.",
   stats: {
-    booksWritten: 4,
-    livesImpacted: "1.2k+",
-    daysPraying: "3,285"
-  }
+    booksWritten: 5,
+    livesImpacted: "5.0k+",
+    daysPraying: "3,450"
+  },
+  isAdmin: false
 };
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User>(defaultUser);
-  const [isClient, setIsClient] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  // Load from local storage on mount
-  useEffect(() => {
-    setIsClient(true);
-    const savedUser = localStorage.getItem("userProfile");
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser));
-      } catch (e) {
-        console.error("Failed to parse user profile", e);
+  const refreshUser = useCallback(async () => {
+    try {
+      const res = await fetch('/api/profile');
+      if (res.ok) {
+        const data = await res.json();
+        setUser(prev => ({ ...prev, ...data, isAdmin }));
       }
+    } catch (e) {
+      console.error("Failed to fetch profile from backend", e);
     }
-  }, []);
+  }, [isAdmin]);
 
-  const updateUser = (userData: Partial<User>) => {
-    setUser((prev) => {
-      const updated = { ...prev, ...userData };
-      localStorage.setItem("userProfile", JSON.stringify(updated));
-      return updated;
-    });
+  useEffect(() => {
+    refreshUser();
+    // Also check local storage for admin session persistence (simulated)
+    const adminSession = localStorage.getItem("isAdmin") === "true";
+    if (adminSession) {
+      setIsAdmin(true);
+      setUser(prev => ({ ...prev, isAdmin: true }));
+    }
+  }, [isAdmin, refreshUser]);
+
+  const updateUser = async (userData: Partial<User>, password?: string) => {
+    try {
+      const res = await fetch('/api/profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, profile: { ...user, ...userData } })
+      });
+      
+      const result = await res.json();
+      if (res.ok) {
+        setUser(prev => ({ ...prev, ...result, isAdmin }));
+        return { success: true };
+      } else {
+        return { success: false, error: result.error };
+      }
+    } catch (e) {
+      return { success: false, error: "Conexão com o servidor falhou." };
+    }
   };
 
-  // Avoid hydration mismatch by rendering default or nothing until client load
-  // But for simple profile data, we can just render. 
-  // Ideally we show a loading spinner if we really care about flickering, 
-  // but for this app it's fine to show default then swap if custom exists.
+  const setAdmin = (val: boolean) => {
+    setIsAdmin(val);
+    localStorage.setItem("isAdmin", val ? "true" : "false");
+    setUser(prev => ({ ...prev, isAdmin: val }));
+  };
 
   return (
-    <UserContext.Provider value={{ user, updateUser }}>
+    <UserContext.Provider value={{ user, updateUser, setAdmin, refreshUser }}>
       {children}
     </UserContext.Provider>
   );

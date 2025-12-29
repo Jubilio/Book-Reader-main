@@ -25,6 +25,10 @@
   opacity: 0.8;
 }
 
+.heroHeader {
+    margin-bottom: 4rem;
+}
+
 /* Service Cards Section */
 .servicesGrid {
   display: grid;

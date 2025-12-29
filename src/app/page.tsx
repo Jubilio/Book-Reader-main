@@ -31,10 +31,10 @@ function BookGrid() {
 
   return (
     <section>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div className={styles.gridHeader}>
             <h1 className={styles.sectionTitle}>Library Collection</h1>
             {search && (
-                <span style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>
+                <span className={styles.searchInfo}>
                     Searching for: &quot;{search}&quot;
                 </span>
             )}
@@ -58,7 +58,7 @@ function BookGrid() {
         {
             filteredBooks.length > 0 ? (
                 filteredBooks.map((book) => (
-                    <Link href={`/book/${book.id}`} key={book.id} style={{textDecoration: 'none'}}>
+                    <Link href={`/book/${book.id}`} key={book.id} className={styles.link}>
                         <motion.div variants={{
                             hidden: { opacity: 0, y: 30 },
                             show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
@@ -72,8 +72,8 @@ function BookGrid() {
                     </Link>
                 ))
             ) : (
-                <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem 0', color: 'var(--text-secondary)' }}>
-                    <i className="fas fa-search" style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.2 }}></i>
+                <div className={styles.emptyState}>
+                    <i className={`fas fa-search ${styles.emptyStateIcon}`}></i>
                     <p>No books found matching your search.</p>
                 </div>
             )
@@ -92,8 +92,8 @@ export default function Home() {
         <div className={styles.contentWrapper}>
             <div className={styles.container}>
                 <Suspense fallback={
-                    <div style={{ textAlign: 'center', padding: '4rem' }}>
-                        <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', color: 'var(--text-secondary)' }}></i>
+                    <div className={styles.loadingWrapper}>
+                        <i className={`fas fa-spinner fa-spin ${styles.loadingIcon}`}></i>
                     </div>
                 }>
                     <Header />

@@ -36,10 +36,10 @@ function LibraryContent() {
 
     return (
         <section>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+            <div className={styles.gridHeader}>
                 <h1 className={styles.sectionTitle}>Minha Biblioteca</h1>
                 {search && (
-                    <span style={{ color: 'var(--text-secondary)', fontStyle: 'italic' }}>
+                    <span className={styles.searchInfo}>
                         Searching for: &quot;{search}&quot;
                     </span>
                 )}
@@ -77,10 +77,10 @@ function LibraryContent() {
                         </Link>
                     ))
                 ) : (
-                    <div style={{ gridColumn: '1/-1', textAlign: 'center', padding: '4rem 0', color: 'var(--text-secondary)' }}>
-                        <i className="fas fa-search" style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.2 }}></i>
-                        <p>No books found matching your search.</p>
-                    </div>
+                <div className={styles.emptyState}>
+                    <i className={`fas fa-search ${styles.emptyStateIcon}`}></i>
+                    <p>No books found matching your search.</p>
+                </div>
                 )
             }
             </motion.div>
@@ -96,8 +96,8 @@ export default function Library() {
         <div className={styles.contentWrapper}>
             <div className={styles.container}>
                 <Suspense fallback={
-                    <div style={{ textAlign: 'center', padding: '4rem' }}>
-                        <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', color: 'var(--text-secondary)' }}></i>
+                    <div className={styles.loadingWrapper}>
+                        <i className={`fas fa-spinner fa-spin ${styles.loadingIcon}`}></i>
                     </div>
                 }>
                     <Header />

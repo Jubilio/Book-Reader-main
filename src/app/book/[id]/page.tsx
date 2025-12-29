@@ -144,15 +144,15 @@ export default function BookPage() {
                     transition={{ delay: 0.3 }}
                 >
                     {loading ? (
-                        <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
-                            <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', marginBottom: '1rem' }}></i>
+                        <div className={styles.loader}>
+                            <i className={`fas fa-spinner fa-spin ${styles.loaderIcon}`}></i>
                             <p>Carregando conteúdo...</p>
                         </div>
                     ) : error ? (
-                        <div style={{ textAlign: 'center', padding: '4rem', color: '#ed4b4b' }}>
-                            <i className="fas fa-exclamation-circle" style={{ fontSize: '2rem', marginBottom: '1rem' }}></i>
+                        <div className={styles.errorContainer}>
+                            <i className={`fas fa-exclamation-circle ${styles.errorIcon}`}></i>
                             <p>{error}</p>
-                            <button onClick={() => window.location.reload()} className={styles.backButton} style={{ marginTop: '1rem' }}>Tentar Novamente</button>
+                            <button onClick={() => window.location.reload()} className={`${styles.backButton} ${styles.errorButton}`}>Tentar Novamente</button>
                         </div>
                     ) : (
                         <Editor

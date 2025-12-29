@@ -50,6 +50,42 @@
 
 .link {
     text-decoration: none;
+    color: inherit;
+}
+
+.gridHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.searchInfo {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.emptyState {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--text-secondary);
+}
+
+.emptyStateIcon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.2;
+}
+
+.loadingWrapper {
+    text-align: center;
+    padding: 4rem;
+}
+
+.loadingIcon {
+    font-size: 2rem;
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {

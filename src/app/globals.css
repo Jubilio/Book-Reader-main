@@ -99,3 +99,47 @@ a {
   margin: 0 auto;
   padding: 0 24px;
 }
+
+/* Book Content Styling (Shared for static HTML) */
+.book-body {
+    font-family: 'Lora', serif;
+    line-height: 1.8;
+}
+
+.book-emphasis {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 2rem 0;
+    color: var(--accent);
+}
+
+.book-signature {
+    text-align: right;
+    margin-top: 2rem;
+}
+
+.book-quote {
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.book-divider {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+}
+
+.book-card {
+    text-align: center;
+    display: block;
+    margin: 1rem 0;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: 10px;
+    border-left: 3px solid var(--accent);
+}
