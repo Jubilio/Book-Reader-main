@@ -26,8 +26,8 @@ const defaultUser: User = {
   name: "Jubílio Maússe",
   role: "Autor • Servo de Deus • Ceifeiro na Seara",
   bio: "Servo de Deus, dedicado a trazer a mensagem de arrependimento e volta ao primeiro amor.",
-  image: "https://media.licdn.com/dms/image/D4E03AQEsTASkLeM94A/profile-displayphoto-shrink_800_800/0/1692468152327?e=1715817600&v=beta&t=Z8FQ1iTDydq0gVcfuiy59diryZ-lddJ67zq1POmnJp8",
-  mission: "Desejo encorajar cada leitor a lembrar-se de onde caiu e a voltar à prática das primeiras obras (Apocalipse 2:5). Minha jornada é sobre restauração e o amor incondicional de Deus, que está sempre disponível para nos receber de volta. Busco viver em plenitude espiritual e inspirar outros a terem comunhão íntima com o Pai.",
+  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400",
+  mission: "Desejo encorajar cada leitor a lembrar-se de onde caiu e a voltar à prática das primeiras obras (Apocalipse 2:5).",
   testimony: "Em 2015, iniciei meu processo de conversão, um marco eterno em minha vida. Tive uma visão gloriosa de Jesus, onde Ele me chamou de volta para cumprir o propósito que tem para mim desde o ventre da minha mãe. Desde aquele encontro, dedico meus dias à oração, ao estudo da Palavra e a servir como instrumento em Suas mãos.",
   stats: {
     booksWritten: 4,

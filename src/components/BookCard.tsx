@@ -1,4 +1,4 @@
-import React from 'react'
+import Image from 'next/image'
 import styles from './BookCard.module.css'
 
 interface BookCardProps {
@@ -12,7 +12,13 @@ export default function BookCard({ title, description, coverImage, onClick }: Bo
     return (
         <div className={styles.card} onClick={onClick}>
             <div className={styles.imageContainer}>
-                <img src={coverImage} alt={title} className={styles.image} />
+                <Image 
+                    src={coverImage} 
+                    alt={title} 
+                    className={styles.image} 
+                    fill 
+                    unoptimized
+                />
             </div>
 
             <div className={styles.content}>

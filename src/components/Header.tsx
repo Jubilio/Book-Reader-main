@@ -4,10 +4,13 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useUser } from "@/context/UserContext";
+import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 export default function Header() {
   const { user } = useUser();
+  const searchParams = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
 
   return (
     <header className={styles.header}>
@@ -28,6 +31,19 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
+            defaultValue={initialQuery}
+            onChange={(e) => {
+               const query = e.target.value;
+               const url = new URL(window.location.href);
+               if (query) {
+                 url.searchParams.set('q', query);
+               } else {
+                 url.searchParams.delete('q');
+               }
+               window.history.replaceState({ ...window.history.state, as: url.href, url: url.href }, '', url.href);
+               // Also dispatch a custom event to notify other components without full refresh
+               window.dispatchEvent(new Event('searchChange'));
+            }}
           />
         </div>
       </motion.div>
@@ -47,6 +63,10 @@ export default function Header() {
                 width={50}
                 height={50}
                 unoptimized={user.image.startsWith('data:')}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(user.name) + "&background=a67c52&color=fff";
+                }}
              />
           </motion.div>
         </Link>

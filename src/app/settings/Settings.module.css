@@ -1,30 +1,204 @@
 .sectionTitle {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-primary);
+  font-family: 'Lora', serif;
 }
 
-.placeholder {
-    text-align: center;
-    padding: 100px 20px;
-    background-color: var(--surface);
-    border-radius: 16px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border);
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
 }
 
-.icon {
-    font-size: 4rem;
-    color: var(--accent);
-    margin-bottom: 20px;
+.card {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
 
-.message {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
+.card:hover {
+  box-shadow: var(--shadow-md);
 }
 
-.description {
-    color: #666;
-    margin-top: 10px;
+.cardTitle {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+}
+
+.cardTitle i {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.settingGroup {
+  margin-bottom: 2rem;
+}
+
+.settingGroup:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Theme Options */
+.themeOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.themeBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  border: 2px solid transparent;
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.themeBtn:hover {
+  transform: translateY(-2px);
+}
+
+.active {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.themeCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.lightCircle { background: #f9f7f2; }
+.darkCircle { background: #121212; }
+.sepiaCircle { background: #f4ecd8; }
+
+.themeLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Choice Buttons (Fonts, Alignment, etc) */
+.choiceGrid {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.choiceBtn {
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choiceBtn:hover {
+  border-color: var(--accent);
+}
+
+.choiceBtn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Range Slider */
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.valueDisplay {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 45px;
+}
+
+/* Footer Actions */
+.footer {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.resetBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+  background: #ff4d4d1a;
+  color: #ff4d4d;
+  border-color: #ff4d4d;
+}
+
+@media (max-width: 768px) {
+  .settingsGrid {
+    grid-template-columns: 1fr;
+  }
 }

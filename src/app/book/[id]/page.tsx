@@ -9,22 +9,59 @@ import { Editor, useDomValue } from "reactjs-editor"
 import { useEffect, useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSettings } from "@/context/SettingsContext"
 
 export default function BookPage() {
     const { id } = useParams()
     const router = useRouter()
+    const { settings } = useSettings();
     
     // Safety check for ID
     const bookId = Array.isArray(id) ? id[0] : id;
 
     const { dom, setDom } = useDomValue();
     const [isClient, setIsClient] = useState(false);
+    const [fetchedContent, setFetchedContent] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    // Dynamic styles based on settings
+    const readerStyles = {
+        fontFamily: settings.fontFamily === 'serif' ? '"Lora", serif' : '"Inter", sans-serif',
+        fontSize: `${settings.fontSize}px`,
+        lineHeight: settings.lineHeight === 'normal' ? '1.4' : settings.lineHeight === 'comfortable' ? '1.8' : '2.2',
+        textAlign: settings.textAlign as any,
+    };
+
+    const containerMaxWidth = settings.textWidth === 'narrow' ? '650px' : settings.textWidth === 'medium' ? '850px' : '1100px';
 
     useEffect(() => {
         setIsClient(true);
     }, []);
 
     const selectedBook = books.find((book) => String(book.id) === bookId);
+
+    // Fetch content from external file
+    useEffect(() => {
+        if (selectedBook && isClient) {
+            setLoading(true);
+            setError(null);
+            fetch(`/content/${selectedBook.id}.html`)
+                .then(res => {
+                    if (!res.ok) throw new Error("Content not found");
+                    return res.text();
+                })
+                .then(text => {
+                    setFetchedContent(text);
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.error("Fetch error:", err);
+                    setError("Não foi possível carregar o conteúdo deste livro.");
+                    setLoading(false);
+                });
+        }
+    }, [selectedBook, isClient]);
 
     const notify = () => toast.success("Your changes have been saved!", {
         position: "bottom-center",
@@ -55,6 +92,8 @@ export default function BookPage() {
                 } catch (e) {
                     console.error("Failed to parse saved DOM", e)
                 }
+            } else {
+                setDom(null)
             }
         }
     }, [isClient, selectedBook, setDom])
@@ -92,31 +131,45 @@ export default function BookPage() {
                     
                     <div className={styles.actions}>
                         <button className={styles.iconButton} title="Share"><i className="fas fa-share-alt"></i></button>
-                        <button className={styles.iconButton} title="Settings"><i className="fas fa-cog"></i></button>
+                        <button className={styles.iconButton} title="Settings" onClick={() => router.push('/settings')}><i className="fas fa-cog"></i></button>
                         <button className={styles.saveButton} onClick={handleSave}>Save Changes</button>
                     </div>
                 </motion.header>
 
                 <motion.div 
                     className={styles.readerContainer}
+                    style={{ maxWidth: containerMaxWidth }}
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                 >
-                     <Editor
-                        key={selectedBook.id}
-                        htmlContent={`
-                            <div class="reader-content-wrapper">
-                                <div style="text-align: center; margin-bottom: 3rem;">
-                                    <h1 style="font-family: 'Lora', serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: #2D2A26;">${selectedBook.title}</h1>
-                                    <span style="font-size: 1.1rem; color: #635C53; font-style: italic;">By ${selectedBook.author}</span>
+                    {loading ? (
+                        <div style={{ textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
+                            <i className="fas fa-spinner fa-spin" style={{ fontSize: '2rem', marginBottom: '1rem' }}></i>
+                            <p>Carregando conteúdo...</p>
+                        </div>
+                    ) : error ? (
+                        <div style={{ textAlign: 'center', padding: '4rem', color: '#ed4b4b' }}>
+                            <i className="fas fa-exclamation-circle" style={{ fontSize: '2rem', marginBottom: '1rem' }}></i>
+                            <p>{error}</p>
+                            <button onClick={() => window.location.reload()} className={styles.backButton} style={{ marginTop: '1rem' }}>Tentar Novamente</button>
+                        </div>
+                    ) : (
+                        <Editor
+                            key={selectedBook.id}
+                            htmlContent={`
+                                <div class="reader-content-wrapper">
+                                    <div style="text-align: center; margin-bottom: 3rem;">
+                                        <h1 style="font-family: 'Lora', serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); transition: color 0.3s ease;">${selectedBook.title}</h1>
+                                        <span style="font-size: 1.1rem; color: var(--text-secondary); font-style: italic; transition: color 0.3s ease;">By ${selectedBook.author}</span>
+                                    </div>
+                                    <div style="font-size: ${readerStyles.fontSize}; line-height: ${readerStyles.lineHeight}; color: var(--text-primary); font-family: ${readerStyles.fontFamily}; text-align: ${readerStyles.textAlign}; transition: all 0.3s ease;">
+                                        ${fetchedContent}
+                                    </div>
                                 </div>
-                                <div style="font-size: 1.15rem; line-height: 1.8; color: #2D2A26; font-family: 'Lora', serif;">
-                                    ${selectedBook.content}
-                                </div>
-                            </div>
-                        `}
-                    />
+                            `}
+                        />
+                    )}
                 </motion.div>
             </div>
             <ToastContainer />
