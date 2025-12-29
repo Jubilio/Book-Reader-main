@@ -1,398 +1,95 @@
 export const books = [
-    { id: 1,author:'William Shakespearee', title: 'Soul',image:'https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-    William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-    </p>
-    <p>
-    At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-    </p>
-    
-    <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-    
-    
-    <p>
-    Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-    However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-    </p>
-    <br>
-    </aside>
-    
-    <aside>
-    <p>
-     Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-    </p>
-    <p>
-    At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-    </p>
-    <p>
-     Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-    </p>
-    <p>
-    However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-    </p>
-    <p>
-    However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-    </p>`},
-    { id: 2,author:'Jack Daniels', title: 'Memory',image:'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1698210220' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-       
-    Atomic Habits" by James Clear is a captivating self-help book that delves into the profound impact of small habits and the underlying science that governs habit formation. Clear's central thesis revolves around the concept of "atomic habits," which are tiny changes that, when consistently practiced, lead to remarkable transformations over time. He argues that the key to achieving lasting change lies not in dramatic overhauls, but rather in the consistent implementation of these small, incremental improvements.
-        </p>
-        <p>
-        Clear structures the book around four fundamental principles of habit formation: cue, craving, response, and reward. The cue serves as the trigger that initiates a habit, prompting individuals to take action. Clear emphasizes the importance of identifying and understanding these cues, as they lay the foundation for habit formation. By recognizing the cues that trigger certain behaviors, individuals can intentionally design their environment to make desired habits more visible and accessible.
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Craving, according to Clear, is the motivational force behind every habit. He suggests that making habits inherently satisfying increases the likelihood of them becoming ingrained in one's routine. By associating positive emotions and rewards with desired behaviors, individuals can cultivate a sense of intrinsic motivation that sustains their commitment to their habits over time.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-        Throughout the book, Clear offers practical strategies and techniques for implementing these principles in everyday life. He introduces concepts such as habit stacking, where new habits are built upon existing routines, and the two-minute rule, which encourages starting with small, manageable actions to overcome inertia and build momentum. Clear also explores the concept of identity-based habits, where habits are tied to one's self-image, and discusses how changing one's identity can lead to lasting habit change.
-        </p>
-        <p>
-        In conclusion, "Atomic Habits" provides readers with a comprehensive framework for understanding and harnessing the power of habits to achieve personal and professional goals. By emphasizing the significance of small, incremental changes and providing actionable strategies for habit formation, Clear empowers individuals to cultivate habits that lead to meaningful and lasting transformations in their lives.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-    { id: 3,author:'Jim Beam', title: 'My cover',image:'https://edit.org/images/cat/book-covers-big-2019101610.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-    It provides readers with a comprehensive framework for understanding and harnessing the power of habits to achieve personal and professional goals. By emphasizing the significance of small, incremental changes and providing actionable strategies for habit formation, Clear empowers individuals to cultivate habits that lead to meaningful and lasting transformations in their lives.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Response refers to the action taken in response to a cue, while reward is the ultimate outcome or benefit of a habit. Clear advocates for making responses easy and convenient to perform, as this reduces friction and increases the likelihood of habit formation. Moreover, he stresses the importance of immediate rewards to reinforce positive habits, making them more likely to stick in the long run.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-    { id: 4,author:'Crown Royal', title: 'A million to one',image:'https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-    Response refers to the action taken in response to a cue, while reward is the ultimate outcome or benefit of a habit. Clear advocates for making responses easy and convenient to perform, as this reduces friction and increases the likelihood of habit formation. Moreover, he stresses the importance of immediate rewards to reinforce positive habits, making them more likely to stick in the long run.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-    { id: 5,author:'Johnnie Walker', title: 'Pencil',image:'https://marketplace.canva.com/EAFXKFIDad4/1/0/1003w/canva-brown-mystery-novel-book-cover-cSu1pdo96zA.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-    Response refers to the action taken in response to a cue, while reward is the ultimate outcome or benefit of a habit. Clear advocates for making responses easy and convenient to perform, as this reduces friction and increases the likelihood of habit formation. Moreover, he stresses the importance of immediate rewards to reinforce positive habits, making them more likely to stick in the long run.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-    { id: 6,author:'Glenfiddich', title: 'Audrey is One',image:'https://creativereview.imgix.net/content/uploads/2022/12/Colony_Mockup.jpg?auto=compress,format&q=60&w=1436&h=2000' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`}, 
-     { id: 7,author:'Captain Morgan', title: 'The killer poison',image:'https://img0-placeit-net.s3-accelerate.amazonaws.com/uploads/stage/stage_image/40050/optimized_large_thumb_stage.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-     { id: 8,author:'William Shakespeare', title: 'Soul',image:'https://marketplace.canva.com/EAFaQMYuZbo/1/0/1003w/canva-brown-rusty-mystery-novel-book-cover-hG1QhA7BiBU.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-     { id: 9,author:'William Shakespeare', title: 'Memory',image:'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/contemporary-fiction-night-time-book-cover-design-template-1be47835c3058eb42211574e0c4ed8bf_screen.jpg?ts=1698210220' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-     { id: 10,author:'William Shakespeare', title: 'My cover',image:'https://edit.org/images/cat/book-covers-big-2019101610.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-     { id: 11,author:'William Shakespeare', title: 'A million to one',image:'https://www.designforwriters.com/wp-content/uploads/2017/10/design-for-writers-book-cover-tf-2-a-million-to-one.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-     { id: 12,author:'William Shakespeare', title: 'Pencil',image:'https://marketplace.canva.com/EAFXKFIDad4/1/0/1003w/canva-brown-mystery-novel-book-cover-cSu1pdo96zA.jpg' , description:'A book review is a form of literary criticism in which a book is merely described or analyzed. ',content:`<p>
-        William Shakespeare's "Romeo and Juliet" is a timeless tale of love, fate, and tragedy that has captivated audiences for centuries. Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares,
-        </p>
-        
-        <p>the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.</p>
-        
-        
-        <p>
-        Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together.
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>
-        <br>
-        </aside>
-        
-        <aside>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        At the heart of the play is the passionate love between Romeo and Juliet, which transcends the barriers of their family feud. From the moment they meet at the Capulet's masquerade ball, they are drawn to each other with an irresistible force. Their love is intense and all-consuming, expressed through Shakespeare's lyrical poetry and romantic imagery. Romeo declares, "Did my heart love till now? forswear it, sight! / For I ne'er saw true beauty till this night" (Act 1, Scene 5), encapsulating the instantaneous connection he feels with Juliet.
-        </p>
-        <p>
-         Set in Verona, Italy, the play tells the story of two young lovers from feuding families, whose passion ultimately leads to their untimely deaths. Through rich language, vivid characters, and poignant themes, Shakespeare explores the complexities of human emotion and the consequences of impulsive actions.
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. 
-        </p>
-        <p>
-        However, their love is also fraught with danger and secrecy due to the feud between their families, the Montagues and Capulets. Despite the risks, Romeo and Juliet are willing to defy societal norms and family expectations to be together. Their clandestine marriage in Act 2 symbolizes their commitment to each other, but it also sets the stage for the tragic events that follow.
-        </p>`},
-   
-  ];
+    { 
+        id: 1,
+        author: 'Jubílio Maússe', 
+        title: 'Retornando às Raízes',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073&auto=format&fit=crop', // Beach/Nature/Roots vibe
+        description: 'Uma jornada de arrependimento, restauração e propósito. Descubra como voltar ao primeiro amor.',
+        content: `<p>
+        Querido leitor, ao compartilhar meu testemunho e a experiência de retorno às minhas raízes em Deus, desejo encorajá-lo a lembrar-se de onde caíste e voltar à prática das primeiras obras. Deus nos chama de volta para Sua presença, independentemente de quão distantes tenhamos nos afastado.
+        </p>
+        <p>
+        "Lembra-te, pois, de onde caíste, arrepende-te e volta à prática das primeiras obras" (Apocalipse 2:5).
+        </p>`
+    },
+    { 
+        id: 2,
+        author: 'Jubílio Maússe', 
+        title: 'O Poder da Oração',
+        image: 'https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=1974&auto=format&fit=crop', // Hands praying/Bible
+        description: 'Mergulhe na intimidade com o Pai. Um guia prático para uma vida de oração constante e fervorosa.',
+        content: `<p>Busque a Deus em oração: Dedique um tempo regular para conversar com Deus em oração. Fale com Ele sobre seus anseios, dúvidas e necessidades.</p>`
+    },
+    { 
+        id: 3,
+        author: 'Jubílio Maússe', 
+        title: 'Nova Criatura',
+        image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2070&auto=format&fit=crop', // Sunrise/New beginning
+        description: 'As coisas velhas já passaram. Entenda sua nova identidade em Cristo e viva o propósito eterno.',
+        content: `<p>"Portanto, se alguém está em Cristo, é nova criação. As coisas antigas já passaram; eis que surgiram coisas novas!" (2 Coríntios 5:17).</p>`
+    },
+    { 
+        id: 4,
+        author: 'Autores Clássicos', 
+        title: 'Salmos & Provérbios',
+        image: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=2070&auto=format&fit=crop', 
+        description: 'Sabedoria milenar para o dia a dia. Uma coleção de versículos para meditação diária.',
+        content: `<p>"Antes de nascerem os montes e de criares a terra e o mundo, de eternidade a eternidade tu és Deus" (Salmos 90:2).</p>`
+    },
+    { 
+        id: 5,
+        author: 'Jubílio Maússe', 
+        title: 'Comunhão',
+        image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=2070&auto=format&fit=crop', // Group/Community
+        description: 'A importância de caminhar juntos. Cultive relacionamentos que fortalecem sua fé.',
+        content: `<p>"E perseveravam na doutrina dos apóstolos e na comunhão, no partir do pão e nas orações" (Atos 2:42).</p>`
+    },
+    { 
+        id: 6,
+        author: 'Estudos Bíblicos', 
+        title: 'A Grande Jornada',
+        image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=2073&auto=format&fit=crop', // Path/Journey
+        description: 'Estudos aprofundados sobre a caminhada do cristão em tempos modernos.',
+        content: `<p>A lembrança traz consigo um entendimento. Quando nos lembramos do passado, podemos espelhá-lo no presente.</p>`
+    },
+    { 
+        id: 7,
+        author: 'Jubílio Maússe', 
+        title: 'Binth Buque: Minha Musa',
+        image: 'https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?q=80&w=1986&auto=format&fit=crop', // Romantic/Poetry/Moonlight
+        description: 'Uma celebração do amor que floresce sob o luar. Versos dedicados à musa encantada.',
+        content: `
+        <div style="font-family: 'Lora', serif; text-align: center; padding: 2rem;">
+            <h3 style="color: #A67C52; margin-bottom: 2rem;">O amor e a adoração pela pessoa amada</h3>
+            
+            <p style="margin-bottom: 1.5rem;">
+            Nas manhãs ensolaradas ou sob o luar brilhante,<br>
+            Binth Buque, minha musa encantada e radiante.<br>
+            Em teus olhos, o sol reflete seu esplendor,<br>
+            E a lua inveja tua beleza, meu amor.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+            No abraço teu, encontro a força do sol a me aquecer,<br>
+            E na suavidade do teu sorriso, a lua a me envolver.<br>
+            Teu amor é como um eclipse, mágico e singular,<br>
+            Um momento eterno onde tudo parece se acalmar.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+            Em cada verso que escrevo, em cada palavra que digo,<br>
+            Celebro o amor que nos une, o elo que não tem abrigo.<br>
+            Binth Buque, és a estrela que ilumina o meu caminho,<br>
+            A força que me guia, em cada passo, em cada carinho.
+            </p>
+
+            <p style="font-style: italic; color: #635C53;">
+            Nas estrofes deste poema, meu coração transparece,<br>
+            A celebração do amor que entre nós floresce.<br>
+            Jubílio Maússe, eternamente apaixonado estou,<br>
+            Por ti, Binth Buque, minha amada, meu tesouro.
+            </p>
+        </div>
+        `
+    }
+];

@@ -1,32 +1,65 @@
 .main {
-  width: 95%;
-  margin: auto;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
 }
 
-.containerStyle {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.layout {
+    display: flex;
+    min-height: 100vh;
 }
 
-.content {
-  width: 30%;
+.contentWrapper {
+    flex: 1;
+    margin-left: 250px; /* Width of sidebar */
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease;
 }
 
-.ulGroupStyle {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px 40px 40px;
 }
 
-.grouper {
-  background-color: #f8eadd;
-  margin: 0 30px;
-  padding: 10px 1px;
-  border-radius: 20px;
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-family: 'Lora', serif;
+    position: relative;
+    padding-bottom: 1rem;
 }
 
-.title {
-  padding-left: 40px;
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+}
+
+.bookGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem 0;
+}
+
+.link {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .contentWrapper {
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 80px; /* Space for bottom nav if we had one, or just safe area */
+    }
+    
+    .container {
+        padding: 0 20px 20px 20px;
+    }
 }

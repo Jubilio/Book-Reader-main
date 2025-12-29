@@ -1,0 +1,105 @@
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.featuredCard {
+    display: flex;
+    gap: 30px;
+    background-color: var(--surface);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 4rem;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.featuredImage {
+    width: 180px; 
+    height: 180px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+
+.roleBadge {
+    background-color: var(--accent);
+    color: white; 
+    padding: 4px 12px; 
+    border-radius: 20px; 
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.authorName {
+    font-size: 2rem; 
+    margin: 10px 0; 
+    color: var(--text-primary);
+}
+
+.authorBio {
+    font-size: 1.1rem; 
+    color: var(--text-secondary); 
+    max-width: 600px; 
+    line-height: 1.6;
+}
+
+.profileLinkWrapper {
+    margin-top: 20px;
+}
+
+.profileLink {
+    text-decoration: none; 
+    color: var(--accent); 
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent);
+}
+
+.arrowIcon {
+    margin-left: 5px;
+}
+
+.inspirationTitle {
+    font-size: 1.8rem; 
+    margin-bottom: 2rem; 
+    color: var(--text-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.inspirationCard {
+    background-color: var(--bg-primary);
+    background-image: linear-gradient(to bottom right, var(--bg-primary), var(--bg-secondary));
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.inspirationName {
+    font-size: 1.4rem; 
+    margin-bottom: 5px;
+}
+
+.inspirationRole {
+    color: var(--accent); 
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    margin-bottom: 10px;
+}
+
+.inspirationDesc {
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .featuredCard {
+        flex-direction: column;
+        text-align: center;
+    }
+}

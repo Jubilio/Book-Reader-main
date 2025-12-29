@@ -1,0 +1,258 @@
+.profileHeader {
+    background-color: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.banner {
+    height: 200px;
+    background-color: var(--accent);
+    background-image: linear-gradient(135deg, var(--accent) 0%, #8C6A45 100%);
+    position: relative;
+}
+
+.profileContent {
+    padding: 0 40px 40px 40px;
+    margin-top: -60px;
+}
+
+.headerRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.avatarContainer {
+    position: relative;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--surface);
+    box-shadow: var(--shadow-md);
+    object-fit: cover;
+}
+
+.editButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.editButton:hover {
+    transform: scale(1.1);
+}
+
+.fileInput {
+    display: none;
+}
+
+.userInfo {
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+.editInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.inputName {
+    font-size: 2rem;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+    width: 100%;
+}
+
+.inputRole {
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+    width: 100%;
+}
+
+.userName {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.userRole {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.gridLayout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    padding-bottom: 5px;
+    color: var(--text-primary);
+}
+
+.textArea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-family: inherit;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    resize: vertical;
+}
+
+.textDisplay {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.statsCard {
+    background-color: var(--bg-primary);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.statsTitle {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.statsList {
+    list-style: none;
+    padding: 0;
+}
+
+.statsItem {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statsLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+}
+
+.statsIcon {
+    width: 25px;
+    color: var(--accent);
+    text-align: center;
+}
+
+.statsInput {
+    width: 80px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    text-align: right;
+    font-family: inherit;
+}
+
+.statsValue {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.actionButton {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.actionButton:hover {
+    background-color: #8C6A45;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.saveButton {
+    flex: 1;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.cancelButton {
+    flex: 1;
+    padding: 12px;
+    background-color: #999;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .gridLayout {
+        grid-template-columns: 1fr;
+    }
+    .headerRow {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .userInfo {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .editInputs {
+        align-items: center;
+    }
+}

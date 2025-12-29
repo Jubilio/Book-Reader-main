@@ -1,0 +1,30 @@
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.placeholder {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: var(--surface);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+}
+
+.icon {
+    font-size: 4rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.description {
+    color: #666;
+    margin-top: 10px;
+}

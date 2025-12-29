@@ -1,0 +1,140 @@
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.featuredCard {
+    background-color: var(--surface);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+}
+
+.cardHeader {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.bookTitle {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-family: 'Lora', serif;
+}
+
+.authorName {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.quoteContainer {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    border-left: 4px solid var(--accent);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #4A4A4A;
+}
+
+.quoteText {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.scriptureRef {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: bold;
+}
+
+.contentParagraph {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    text-align: justify;
+}
+
+.suggestionsTitle {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.suggestionsList {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestionItem {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+}
+
+.suggestionIcon {
+    color: var(--accent);
+    width: 20px;
+    text-align: center;
+}
+
+.authorTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+    color: var(--text-primary);
+}
+
+.authorCard {
+    background-color: var(--bg-primary);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.authorImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+
+.authorInfo h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.4rem;
+}
+
+.authorRole {
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.authorBio {
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .authorCard {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.contentSection {
+    margin-top: 2rem;
+}

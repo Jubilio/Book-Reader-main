@@ -1,31 +1,122 @@
-.appBar{
+.pageWrapper {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+.main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.topBar {
     display: flex;
-    width: 90%;
-    margin: auto;
     justify-content: space-between;
-    align-items:center;
-    min-height:5vh;
-    margin-top:10px;
-    margin-bottom:10px;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-primary); 
+    padding: 1rem 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border);
 }
 
-
-.saveButton{
-    padding: 10px 30px;
-    background: transparent;
-    border-radius: 30px;
-    border: 1px solid #000;
-    margin-right: 20px;
-    cursor:pointer; 
+.backButton {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+    font-family: inherit;
 }
 
-.saveButton:hover{
-    background:#000;
-    color:#fff;
+.backButton:hover {
+    color: var(--accent);
 }
 
-.titleStyles { 
-    text-align: center; 
-    text-transform: uppercase; 
-    padding-left: 100px 
+.bookTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.iconButton:hover {
+    background-color: var(--bg-secondary);
+    color: var(--accent);
+}
+
+.saveButton {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    box-shadow: var(--shadow-sm);
+}
+
+.saveButton:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.readerContainer {
+    background-color: var(--surface);
+    padding: 4rem;
+    border-radius: 4px; /* classic book feel */
+    box-shadow: var(--shadow-sm);
+    min-height: 80vh;
+}
+
+.readerHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.readerTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-family: 'Lora', serif;
+}
+
+.readerAuthor {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.readerContent {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    max-width: 65ch;
+    margin: 0 auto;
 }

@@ -1,24 +1,24 @@
 "use client"
-import Header from "@/components/Header";
-import styles from "./page.module.css";
 import SideBar from "@/components/SideBar";
-import { books } from '@/constants/mockData.mjs'
-import { motion } from 'framer-motion'
+import styles from "../page.module.css";
+import { motion } from "framer-motion";
+import { books } from "@/constants/mockData.mjs";
 import BookCard from "@/components/BookCard";
 import Link from "next/link";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function Home() {
+export default function Library() {
+    // In a real app, this would filter by user's saved books
+    // For now, let's just show all books as "Available in Library"
+    
   return (
     <main className={styles.main}>
       <SideBar />
-      
       <div className={styles.layout}>
         <div className={styles.contentWrapper}>
             <div className={styles.container}>
-                <Header />
-    
                 <section>
-                    <h1 className={styles.sectionTitle}>Library Collection</h1>
+                    <h1 className={styles.sectionTitle}>Minha Biblioteca</h1>
                     
                     <motion.div 
                         className={styles.bookGrid}
@@ -36,7 +36,7 @@ export default function Home() {
                     >
                     {
                         books.map((book) => (
-                            <Link href={`/book/${book.id}`} key={book.id} style={{textDecoration: 'none'}}>
+                            <Link href={`/book/${book.id}`} key={book.id} className={styles.link}>
                                 <motion.div variants={{
                                     hidden: { opacity: 0, y: 30 },
                                     show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
