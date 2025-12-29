@@ -104,6 +104,7 @@ export default function BookPage() {
                     transition={{ delay: 0.3 }}
                 >
                      <Editor
+                        key={selectedBook.id}
                         htmlContent={`
                             <div class="reader-content-wrapper">
                                 <div style="text-align: center; margin-bottom: 3rem;">

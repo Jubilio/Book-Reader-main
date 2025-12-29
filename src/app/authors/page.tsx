@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useUser } from "@/context/UserContext";
+import Image from "next/image";
 
 export default function Authors() {
     const { user } = useUser();
@@ -40,10 +41,13 @@ export default function Authors() {
                         transition={{ duration: 0.5 }}
                         className={styles.featuredCard}
                     >
-                        <img 
+                        <Image 
                             src={featuredAuthor.image} 
                             alt={featuredAuthor.name} 
                             className={styles.featuredImage}
+                            width={180}
+                            height={180}
+                            unoptimized={featuredAuthor.image.startsWith('data:')}
                         />
                         <div>
                             <span className={styles.roleBadge}>

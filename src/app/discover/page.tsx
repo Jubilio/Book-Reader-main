@@ -4,6 +4,7 @@ import layoutStyles from "../page.module.css";
 import styles from "./Discover.module.css";
 import { motion } from "framer-motion";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Image from "next/image";
 
 export default function Discover() {
   return (
@@ -66,10 +67,13 @@ export default function Discover() {
                         transition={{ delay: 0.2 }}
                         className={styles.authorCard}
                     >
-                        <img 
+                        <Image 
                             src="https://media.licdn.com/dms/image/D4E03AQEsTASkLeM94A/profile-displayphoto-shrink_800_800/0/1692468152327?e=1715817600&v=beta&t=Z8FQ1iTDydq0gVcfuiy59diryZ-lddJ67zq1POmnJp8" 
                             alt="Jubílio Maússe" 
                             className={styles.authorImage}
+                            width={100}
+                            height={100}
+                            unoptimized 
                         />
                         <div className={styles.authorInfo}>
                             <h3>Jubílio Maússe</h3>
