@@ -198,17 +198,63 @@
 }
 
 .previewContainer {
-    font-family: var(--preview-font);
-    font-size: var(--preview-size);
-    line-height: var(--preview-line-height);
-    text-align: var(--preview-align);
-    padding: 1rem;
+    font-family: var(--preview-font, inherit);
+    font-size: var(--preview-size, 16px);
+    line-height: var(--preview-line-height, 1.6);
+    text-align: var(--preview-align, left);
+    padding: 1.5rem;
     background: var(--bg-primary);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     border: 1px dashed var(--border);
     color: var(--text-primary);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
 }
+
+/* Let's use CSS variables passed via style safely or better: just use the variables in the style prop if allowed, but the error said NO INLINE STYLES.
+   If I can't use style attribute at all, I have to use data- attributes and pre-generate classes for 14-32px.
+   Alternatively, I can use CSS variables in :root or scoped, but Next.js/React style={...} is technically "inline".
+   Wait, the error specifically mentions "CSS inline styles should not be used".
+   Usually, this refers to `style={{ color: 'red' }}`.
+   I'll use data-attributes for font, line-height, and align. For font-size (which is a range), I'll use data-attributes for common ones or just a set of buckets.
+   Actually, the best way to avoid the lint while keeping it fully dynamic is to use CSS Variables in the `style` prop, but some linters even flag that.
+   If I must avoid `style` COMPLETELY:
+*/
+
+.previewContainer[data-font="serif"] { font-family: 'Lora', serif; }
+.previewContainer[data-font="sans"] { font-family: 'Inter', sans-serif; }
+
+.previewContainer[data-lh="normal"] { line-height: 1.4; }
+.previewContainer[data-lh="comfortable"] { line-height: 1.8; }
+.previewContainer[data-lh="wide"] { line-height: 2.2; }
+
+.previewContainer[data-align="left"] { text-align: left; }
+.previewContainer[data-align="justify"] { text-align: justify; }
+
+/* For font size, since it's a range 14-32, I'll generate the common ones or use a trick.
+   Let's just generate the necessary ones for the range.
+*/
+.previewContainer[data-size="14"] { font-size: 14px; }
+.previewContainer[data-size="15"] { font-size: 15px; }
+.previewContainer[data-size="16"] { font-size: 16px; }
+.previewContainer[data-size="17"] { font-size: 17px; }
+.previewContainer[data-size="18"] { font-size: 18px; }
+.previewContainer[data-size="19"] { font-size: 19px; }
+.previewContainer[data-size="20"] { font-size: 20px; }
+.previewContainer[data-size="21"] { font-size: 21px; }
+.previewContainer[data-size="22"] { font-size: 22px; }
+.previewContainer[data-size="23"] { font-size: 23px; }
+.previewContainer[data-size="24"] { font-size: 24px; }
+.previewContainer[data-size="25"] { font-size: 25px; }
+.previewContainer[data-size="26"] { font-size: 26px; }
+.previewContainer[data-size="27"] { font-size: 27px; }
+.previewContainer[data-size="28"] { font-size: 28px; }
+.previewContainer[data-size="29"] { font-size: 29px; }
+.previewContainer[data-size="30"] { font-size: 30px; }
+.previewContainer[data-size="31"] { font-size: 31px; }
+.previewContainer[data-size="32"] { font-size: 32px; }
 
 @media (max-width: 768px) {
   .settingsGrid {

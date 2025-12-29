@@ -178,12 +178,10 @@ export default function Settings() {
                             </h2>
                             <div 
                                 className={styles.previewContainer}
-                                style={{
-                                    '--preview-font': settings.fontFamily === 'serif' ? '"Lora", serif' : '"Inter", sans-serif',
-                                    '--preview-size': `${settings.fontSize}px`,
-                                    '--preview-line-height': settings.lineHeight === 'normal' ? '1.4' : settings.lineHeight === 'comfortable' ? '1.8' : '2.2',
-                                    '--preview-align': settings.textAlign,
-                                } as React.CSSProperties}
+                                data-font={settings.fontFamily}
+                                data-size={settings.fontSize}
+                                data-lh={settings.lineHeight}
+                                data-align={settings.textAlign}
                             >
                                 <p>Este é um exemplo de como o texto será exibido durante a sua leitura. Ajuste os controles acima para encontrar a configuração ideal para você.</p>
                             </div>

@@ -32,10 +32,10 @@ function BookGrid() {
   return (
     <section>
         <div className={styles.gridHeader}>
-            <h1 className={styles.sectionTitle}>Library Collection</h1>
+            <h1 className={styles.sectionTitle}>Coleção da Biblioteca</h1>
             {search && (
                 <span className={styles.searchInfo}>
-                    Searching for: &quot;{search}&quot;
+                    Buscando por: &quot;{search}&quot;
                 </span>
             )}
         </div>
@@ -74,7 +74,7 @@ function BookGrid() {
             ) : (
                 <div className={styles.emptyState}>
                     <i className={`fas fa-search ${styles.emptyStateIcon}`}></i>
-                    <p>No books found matching your search.</p>
+                    <p>Nenhum livro encontrado correspondente à sua busca.</p>
                 </div>
             )
         }

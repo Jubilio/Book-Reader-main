@@ -135,7 +135,7 @@ export const books = [
     { 
         id: 20,
         author: 'Jubílio Maússe', 
-        title: 'Porque Não?',
+        title: 'Por que não?',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=2074&auto=format&fit=crop',
         description: 'Um questionamento profundo sobre a existência, fé e a coragem de assumir nossos caminhos. A vida como um tabuleiro de xadrez.'
     },
@@ -156,7 +156,7 @@ export const books = [
     { 
         id: 23,
         author: 'Jubílio Maússe', 
-        title: 'Amor: Uma Eresia',
+        title: 'Amor: Uma Heresia',
         image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2070&auto=format&fit=crop',
         description: 'Uma contradição ardente entre querer abolir o amor e simultaneamente confessar o desejo ardente de amar. Fogo e paixão entrelaçados.'
     },

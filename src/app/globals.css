@@ -106,6 +106,18 @@ a {
     line-height: 1.8;
 }
 
+.book-content {
+    font-family: 'Lora', serif;
+    line-height: 1.8;
+    color: #333;
+}
+
+.book-title {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 2rem;
+}
+
 .book-emphasis {
     text-align: center;
     font-weight: bold;
@@ -114,9 +126,18 @@ a {
     color: var(--accent);
 }
 
+.book-alert {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ed4b4b;
+    text-align: center;
+    margin: 2rem 0;
+}
+
 .book-signature {
     text-align: right;
     margin-top: 2rem;
+    font-style: italic;
 }
 
 .book-quote {

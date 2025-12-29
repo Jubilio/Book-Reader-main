@@ -63,7 +63,7 @@ export default function BookPage() {
         }
     }, [selectedBook, isClient]);
 
-    const notify = () => toast.success("Your changes have been saved!", {
+    const notify = () => toast.success("Suas alterações foram salvas!", {
         position: "bottom-center",
         autoClose: 2000,
         theme: "light"
@@ -104,8 +104,8 @@ export default function BookPage() {
         return (
             <div className={styles.pageWrapper}>
                 <div className={styles.main}>
-                    <p>Book not found</p>
-                    <button onClick={() => router.back()} className={styles.backButton}>Go Back</button>
+                    <p>Livro não encontrado</p>
+                    <button onClick={() => router.back()} className={styles.backButton}>Voltar</button>
                 </div>
             </div>
         )
@@ -126,13 +126,13 @@ export default function BookPage() {
                     transition={{ delay: 0.2 }}
                 >
                     <button onClick={() => router.push('/')} className={styles.backButton}>
-                        <i className="fas fa-arrow-left"></i> Back to Library
+                        <i className="fas fa-arrow-left"></i> Voltar para a Biblioteca
                     </button>
                     
                     <div className={styles.actions}>
-                        <button className={styles.iconButton} title="Share"><i className="fas fa-share-alt"></i></button>
-                        <button className={styles.iconButton} title="Settings" onClick={() => router.push('/settings')}><i className="fas fa-cog"></i></button>
-                        <button className={styles.saveButton} onClick={handleSave}>Save Changes</button>
+                        <button className={styles.iconButton} title="Compartilhar"><i className="fas fa-share-alt"></i></button>
+                        <button className={styles.iconButton} title="Configurações" onClick={() => router.push('/settings')}><i className="fas fa-cog"></i></button>
+                        <button className={styles.saveButton} onClick={handleSave}>Salvar Alterações</button>
                     </div>
                 </motion.header>
 
@@ -161,7 +161,7 @@ export default function BookPage() {
                                 <div class="reader-content-wrapper">
                                     <div style="text-align: center; margin-bottom: 3rem;">
                                         <h1 style="font-family: 'Lora', serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); transition: color 0.3s ease;">${selectedBook.title}</h1>
-                                        <span style="font-size: 1.1rem; color: var(--text-secondary); font-style: italic; transition: color 0.3s ease;">By ${selectedBook.author}</span>
+                                        <span style="font-size: 1.1rem; color: var(--text-secondary); font-style: italic; transition: color 0.3s ease;">Por ${selectedBook.author}</span>
                                     </div>
                                     <div style="font-size: ${readerStyles.fontSize}; line-height: ${readerStyles.lineHeight}; color: var(--text-primary); font-family: ${readerStyles.fontFamily}; text-align: ${readerStyles.textAlign}; transition: all 0.3s ease;">
                                         ${fetchedContent}

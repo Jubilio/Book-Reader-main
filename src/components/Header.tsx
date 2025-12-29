@@ -20,13 +20,13 @@ export default function Header() {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
       >
-        <h1 className={styles.bookTitle}>Book App</h1>
+        <h1 className={styles.bookTitle}>App de Livros</h1>
 
         <div className={styles.searchContainer}>
           <i className={`fas fa-search ${styles.searchIcon}`}></i>
           <motion.input
             type="text"
-            placeholder="Find your next story..."
+            placeholder="Encontre sua próxima história..."
             className={styles.searchInput}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
