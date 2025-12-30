@@ -27,7 +27,7 @@ export default function BookPage() {
 
     // Dynamic styles based on settings
     const readerStyles = {
-        fontFamily: settings.fontFamily === 'serif' ? '"Lora", serif' : '"Inter", sans-serif',
+        fontFamily: settings.fontFamily === 'serif' ? "'Lora', serif" : "'Inter', sans-serif",
         fontSize: `${settings.fontSize}px`,
         lineHeight: settings.lineHeight === 'normal' ? '1.4' : settings.lineHeight === 'comfortable' ? '1.8' : '2.2',
         textAlign: settings.textAlign as any,

@@ -1,0 +1,296 @@
+.main {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.adminHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-family: 'Lora', serif;
+    color: var(--text-primary);
+}
+
+.loginContainer {
+    max-width: 450px;
+    margin: 10vh auto;
+    background: var(--surface);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    text-align: center;
+}
+
+.loginIcon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+}
+
+.loginTitle {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.loginDesc {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.inputGroup {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+}
+
+.loginButton {
+    width: 100%;
+    padding: 0.875rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.loginButton:hover {
+    background: var(--accent-hover);
+}
+
+.errorBox {
+    background: #ffeded;
+    color: #e53e3e;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.errorMargin {
+    margin-bottom: 2rem;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    display: grid;
+    gap: 2rem;
+}
+
+.card {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cardTitle i {
+    color: var(--accent);
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2rem;
+}
+
+.avatarSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+}
+
+.uploadBtn {
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.uploadBtn:hover {
+    background: var(--border);
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    min-height: 120px;
+    resize: vertical;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.testimonyArea {
+    min-height: 250px;
+}
+
+.saveStatus {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.actionRow {
+    position: sticky;
+    bottom: 2rem;
+    background: var(--surface);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    z-index: 10;
+}
+
+.saveBtn {
+    padding: 0.75rem 2rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.saveBtn:hover {
+    background: var(--accent-hover);
+}
+
+.logoutBtn {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.logoutBtn:hover {
+    background: #ffeded;
+    color: #e53e3e;
+    border-color: #feb2b2;
+}
+
+.fileInput {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .formGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    .actionRow {
+        flex-direction: column;
+        gap: 1rem;
+        bottom: 1rem;
+    }
+    
+    .saveBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

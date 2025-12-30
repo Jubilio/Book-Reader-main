@@ -146,3 +146,62 @@
 .errorButton {
     margin-top: 1rem;
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .main {
+        padding: 0.75rem;
+    }
+    
+    .topBar {
+        flex-wrap: nowrap; /* Keep on one line if possible */
+        gap: 0.5rem;
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .bookTitle {
+        font-size: 1.1rem;
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .backButton span {
+        display: none; /* Hide 'Back' text on mobile */
+    }
+    
+    .readerContainer {
+        padding: 1.25rem 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    
+    .readerHeader {
+        margin-bottom: 1.5rem;
+    }
+    
+    .readerTitle {
+        font-size: 1.6rem;
+    }
+    
+    .readerContent {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .readerContainer {
+        padding: 1rem;
+    }
+    
+    .readerTitle {
+        font-size: 1.5rem;
+    }
+    
+    .actions {
+        gap: 0.5rem;
+    }
+}

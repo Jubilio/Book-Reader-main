@@ -128,10 +128,24 @@
     line-height: 1.5;
 }
 
+@media (max-width: 768px) {
+    .bookTitle {
+        font-size: 1.5rem;
+    }
+    .featuredCard {
+        padding: 1.5rem;
+    }
+}
+
 @media (max-width: 600px) {
     .authorCard {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
+    }
+    .authorImage {
+        width: 80px;
+        height: 80px;
     }
 }
 

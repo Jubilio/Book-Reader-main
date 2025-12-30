@@ -101,5 +101,22 @@
     .featuredCard {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
+    }
+    .authorName {
+        font-size: 1.5rem;
+    }
+    .featuredImage {
+        width: 140px;
+        height: 140px;
+    }
+    .sectionTitle {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid {
+        grid-template-columns: 1fr;
     }
 }

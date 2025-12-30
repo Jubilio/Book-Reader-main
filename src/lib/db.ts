@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { hashPasswordSync } from './password';
 
 const DB_PATH = path.join(process.cwd(), 'data', 'db.json');
 
@@ -10,13 +11,13 @@ function ensureDb() {
         fs.mkdirSync(dir, { recursive: true });
     }
     if (!fs.existsSync(DB_PATH)) {
-        // Initial data
+        // Initial data with hashed password
         const initialData = {
             profile: {
                 name: "Jubílio Maússe",
                 role: "Autor • Servo de Deus • Mentor Espiritual",
                 bio: "Servo de Deus, dedicado a guiar almas no caminho da restauração e do primeiro amor.",
-                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400",
+                image: "/profile.jpg",
                 mission: "Encorajar leitores à restauração espiritual e ao aprofundamento da comunhão com o Criador através da Palavra.",
                 testimony: "Minha jornada começou em 2015, após um encontro transformador com a Graça. Desde então, cada obra que escrevo é um reflexo desse chamado eterno.",
                 stats: {
@@ -25,7 +26,8 @@ function ensureDb() {
                     daysPraying: "3,450"
                 }
             },
-            adminPassword: "admin123" // Simplified for demonstration
+            // Password is now stored as bcrypt hash (default: admin123)
+            adminPasswordHash: hashPasswordSync("admin123")
         };
         fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
     }

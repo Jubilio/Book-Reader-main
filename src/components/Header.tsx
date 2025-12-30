@@ -4,13 +4,19 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useUser } from "@/context/UserContext";
+import { useSidebar } from "@/context/SidebarContext";
+import { useTheme } from "@/context/ThemeContext";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { useSearch } from "@/context/SearchContext";
 
 export default function Header() {
   const { user } = useUser();
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get("q") || "";
+  const { toggleSidebar } = useSidebar();
+  const { theme, toggleTheme } = useTheme();
+  const { searchQuery, setSearchQuery } = useSearch();
+
+  const themeIcon = theme === "dark" ? "fa-moon" : theme === "sepia" ? "fa-palette" : "fa-sun";
 
   return (
     <header className={styles.header}>
@@ -20,7 +26,16 @@ export default function Header() {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
       >
-        <h1 className={styles.bookTitle}>App de Livros</h1>
+        <div className={styles.bookTitle}>
+          <button 
+            className={styles.menuButton} 
+            onClick={toggleSidebar}
+            aria-label="Toggle menu"
+          >
+            <i className="fas fa-bars"></i>
+          </button>
+          <span>App de Livros</span>
+        </div>
 
         <div className={styles.searchContainer}>
           <i className={`fas fa-search ${styles.searchIcon}`}></i>
@@ -31,19 +46,8 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            defaultValue={initialQuery}
-            onChange={(e) => {
-               const query = e.target.value;
-               const url = new URL(window.location.href);
-               if (query) {
-                 url.searchParams.set('q', query);
-               } else {
-                 url.searchParams.delete('q');
-               }
-               window.history.replaceState({ ...window.history.state, as: url.href, url: url.href }, '', url.href);
-               // Also dispatch a custom event to notify other components without full refresh
-               window.dispatchEvent(new Event('searchChange'));
-            }}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </motion.div>
@@ -54,6 +58,16 @@ export default function Header() {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
       >
+        <motion.button
+          className={styles.themeButton}
+          onClick={toggleTheme}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle theme"
+          title={`Tema: ${theme}`}
+        >
+          <i className={`fas ${themeIcon}`}></i>
+        </motion.button>
         <Link href="/profile" className={styles.avatarLink}>
           <motion.div whileHover={{ scale: 1.05 }}>
              <Image

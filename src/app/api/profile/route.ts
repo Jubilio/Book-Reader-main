@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getData, setData } from '@/lib/db';
+import { verifyPassword } from '@/lib/password';
 
 export async function GET() {
     try {
@@ -17,8 +18,9 @@ export async function POST(request: Request) {
         
         const data = getData();
         
-        // Simple security check
-        if (password !== data.adminPassword) {
+        // Secure password verification using bcrypt
+        const isValid = await verifyPassword(password || '', data.adminPasswordHash || '');
+        if (!isValid) {
             return NextResponse.json({ error: 'Unauthorized: Only administrators can update the profile.' }, { status: 403 });
         }
         

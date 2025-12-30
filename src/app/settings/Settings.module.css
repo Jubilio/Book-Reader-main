@@ -64,6 +64,18 @@
   gap: 1rem;
 }
 
+@media (max-width: 480px) {
+  .themeOptions {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
 .themeBtn {
   display: flex;
   flex-direction: column;

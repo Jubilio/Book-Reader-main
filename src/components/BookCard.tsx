@@ -6,9 +6,10 @@ interface BookCardProps {
     description: string;
     coverImage: string;
     onClick?: () => void;
+    priority?: boolean;
 }
 
-export default function BookCard({ title, description, coverImage, onClick }: BookCardProps) {
+export default function BookCard({ title, description, coverImage, onClick, priority }: BookCardProps) {
     return (
         <div className={styles.card} onClick={onClick}>
             <div className={styles.imageContainer}>
@@ -18,6 +19,7 @@ export default function BookCard({ title, description, coverImage, onClick }: Bo
                     className={styles.image} 
                     fill 
                     unoptimized
+                    priority={priority}
                 />
             </div>
 

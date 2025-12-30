@@ -29,7 +29,7 @@ const defaultUser: User = {
   name: "Jubílio Maússe",
   role: "Autor • Servo de Deus • Mentor Espiritual",
   bio: "Servo de Deus, dedicado a guiar almas no caminho da restauração e do primeiro amor.",
-  image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400",
+  image: "/profile.jpg",
   mission: "Encorajar leitores à restauração espiritual e ao aprofundamento da comunhão com o Criador através da Palavra.",
   testimony: "Minha jornada começou em 2015, após um encontro transformador com a Graça.",
   stats: {

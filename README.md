@@ -1,41 +1,104 @@
+# 📚 Book-Reader
 
-# Book-Reader
+Uma experiência premium de leitura de livros digitais construída com Next.js 14.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Next.js](https://img.shields.io/badge/Next.js-14.2-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)
+![License](https://img.shields.io/badge/License-ISC-green)
 
-## Getting Started
+## ✨ Features
 
-First, run the development server:
+- 📖 **Leitura Imersiva** - Interface limpa e focada na leitura
+- 🌙 **Temas** - Suporte a Light, Dark e Sepia mode
+- 🔍 **Busca Inteligente** - Encontre livros por título, autor ou descrição
+- 👤 **Perfil Personalizável** - Gerencie suas informações de autor
+- 🔐 **Segurança** - Senhas hashadas com bcrypt
+- 📱 **Responsivo** - Funciona em qualquer dispositivo
+- 🎨 **Animações Fluidas** - Transições suaves com Framer Motion
+
+## 🚀 Começando
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm ou yarn
+
+### Instalação
 
 ```bash
+# Clone o repositório
+git clone https://github.com/Jubilio/Book-Reader.git
+
+# Entre no diretório
+cd Book-Reader
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```text
+src/
+├── app/                    # Rotas Next.js (App Router)
+│   ├── api/               # API Routes
+│   ├── book/              # Página de leitura
+│   ├── discover/          # Descoberta de livros
+│   ├── library/           # Biblioteca pessoal
+│   ├── profile/           # Perfil do usuário
+│   └── settings/          # Configurações
+├── components/            # Componentes reutilizáveis
+│   ├── Header.tsx        # Cabeçalho com busca e tema
+│   ├── SideBar.tsx       # Menu lateral
+│   └── BookCard.tsx      # Card de livro
+├── context/               # Context API
+│   ├── UserContext.tsx   # Estado do usuário
+│   ├── ThemeContext.tsx  # Gerenciamento de tema
+│   └── SidebarContext.tsx
+└── lib/                   # Utilitários
+    ├── db.ts             # Persistência de dados
+    └── password.ts       # Hash de senhas (bcrypt)
+```
 
-## Learn More
+## 🛠️ Stack Tecnológica
 
-To learn more about Next.js, take a look at the following resources:
+| Tecnologia | Propósito |
+| --- | --- |
+| **Next.js 14** | Framework React com SSR |
+| **React 18** | Biblioteca UI |
+| **TypeScript** | Tipagem estática |
+| **Framer Motion** | Animações |
+| **bcryptjs** | Hash de senhas |
+| **FontAwesome** | Ícones |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Temas Disponíveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+| Tema | Descrição |
+| --- | --- |
+| ☀️ Light | Tema claro padrão |
+| 🌙 Dark | Tema escuro para leitura noturna |
+| 📜 Sepia | Tom sépia para conforto visual |
 
-## Deploy on Vercel
+## 📜 Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev    # Servidor de desenvolvimento
+npm run build  # Build de produção
+npm run start  # Servidor de produção
+npm run lint   # Verificar linting
+npm run clean  # Limpar cache
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 👤 Autor
 
-# Book-Reader
+**Jubílio Maússe**  
+Autor • Servo de Deus • Mentor Espiritual
+
+---
+
+Feito com ❤️ para a glória de Deus

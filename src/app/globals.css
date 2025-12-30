@@ -164,3 +164,54 @@ a {
     padding: 10px;
     border-left: 3px solid var(--accent);
 }
+
+/* Mobile Responsive Utilities */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .book-content {
+        padding: 1rem;
+    }
+    
+    .book-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .book-quote {
+        margin: 1rem 0;
+        padding-left: 0.75rem;
+    }
+    
+    .book-alert {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --reader-font-size: 16px;
+    }
+    
+    body {
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    .container {
+        padding: 0 12px;
+    }
+}

@@ -12,19 +12,12 @@ import { useMemo, useState, useEffect, Suspense } from "react";
 
 import Header from "@/components/Header";
 
+import { useSearch } from "@/context/SearchContext";
+
 function LibraryContent() {
     // In a real app, this would filter by user's saved books
     // For now, let's just show all books as "Available in Library"
-    const searchParams = useSearchParams();
-    const search = searchParams.get("q") || "";
-    
-    const [, setUpdate] = useState(0);
-    
-    useEffect(() => {
-        const handleSearch = () => setUpdate(u => u + 1);
-        window.addEventListener('searchChange', handleSearch);
-        return () => window.removeEventListener('searchChange', handleSearch);
-    }, []);
+    const { searchQuery: search } = useSearch();
 
     const filteredBooks = useMemo(() => {
         return books.filter(book => 
@@ -62,7 +55,7 @@ function LibraryContent() {
             >
             {
                 filteredBooks.length > 0 ? (
-                    filteredBooks.map((book) => (
+                    filteredBooks.map((book, index) => (
                         <Link href={`/book/${book.id}`} key={book.id} className={styles.link}>
                             <motion.div variants={{
                                 hidden: { opacity: 0, y: 30 },
@@ -72,6 +65,7 @@ function LibraryContent() {
                                     title={book.title}
                                     coverImage={book.image}
                                     description={book.description}
+                                    priority={index < 6}
                                 />
                             </motion.div>
                         </Link>
