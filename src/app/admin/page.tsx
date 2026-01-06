@@ -2,52 +2,56 @@
 import SideBar from "@/components/SideBar";
 import layoutStyles from "../page.module.css";
 import styles from "./Admin.module.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { useUser } from "@/context/UserContext";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 export default function AdminPage() {
-    const { user, updateUser, setAdmin } = useUser();
+    const { data: session, status } = useSession();
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [error, setError] = useState("");
-    const [formData, setFormData] = useState(user);
+    const [formData, setFormData] = useState<any>(null);
     const [isSaving, setIsSaving] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    // Sync internal state when user context changes
+    // Fetch profile data when authenticated
     useEffect(() => {
-        if (user) {
-            setFormData(user);
+        if (status === "authenticated") {
+            fetch('/api/profile')
+                .then(res => res.json())
+                .then(data => {
+                    setFormData({
+                        ...data,
+                        stats: {
+                            booksWritten: data.booksWritten,
+                            livesImpacted: data.livesImpacted,
+                            daysPraying: data.daysPraying
+                        }
+                    });
+                })
+                .catch(err => console.error("Error fetching profile:", err));
         }
-    }, [user]);
+    }, [status]);
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
-        try {
-            const res = await fetch('/api/auth', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password })
-            });
-            
-            const result = await res.json();
-            if (res.ok && result.success) {
-                setAdmin(true);
-                setError("");
-            } else {
-                setError(result.error || "Senha administrativa incorreta.");
-            }
-        } catch (e) {
-            setError("Erro ao conectar com o servidor.");
+        const result = await signIn("credentials", {
+            redirect: false,
+            email,
+            password,
+        });
+
+        if (result?.error) {
+            setError("Email ou senha incorretos.");
         }
     };
 
     const handleLogout = () => {
-        setAdmin(false);
-        setPassword("");
+        signOut();
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -77,17 +81,30 @@ export default function AdminPage() {
     const handleSave = async () => {
         setIsSaving(true);
         setError("");
-        const result = await updateUser(formData, password);
-        if (result.success) {
-            setError("");
-            alert("Perfil atualizado com sucesso!");
-        } else {
-            setError(result.error || "Erro ao salvar alterações.");
+        try {
+            const res = await fetch('/api/profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ profile: formData })
+            });
+            
+            if (res.ok) {
+                alert("Perfil atualizado com sucesso!");
+            } else {
+                const data = await res.json();
+                setError(data.error || "Erro ao salvar alterações.");
+            }
+        } catch (e) {
+            setError("Erro ao conectar com o servidor.");
         }
         setIsSaving(false);
     };
 
-    if (!user.isAdmin) {
+    if (status === "loading") {
+        return <div className={styles.loading}>Carregando...</div>;
+    }
+
+    if (status === "unauthenticated") {
         return (
             <main className={layoutStyles.main}>
                 <SideBar />
@@ -113,15 +130,26 @@ export default function AdminPage() {
                                 
                                 <form onSubmit={handleLogin}>
                                     <div className={styles.inputGroup}>
-                                        <label className={styles.label}>Senha de Administrador</label>
+                                        <label className={styles.label}>Email</label>
+                                        <input 
+                                            type="email" 
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className={styles.input}
+                                            placeholder="admin@bookreader.com"
+                                            autoFocus
+                                            required
+                                        />
+                                    </div>
+                                    <div className={styles.inputGroup}>
+                                        <label className={styles.label}>Senha</label>
                                         <input 
                                             type="password" 
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             className={styles.input}
                                             placeholder="Digite sua senha..."
-                                            autoFocus
-                                            aria-label="Senha Administrativa"
+                                            required
                                         />
                                     </div>
                                     <button type="submit" className={styles.loginButton}>
@@ -135,6 +163,8 @@ export default function AdminPage() {
             </main>
         );
     }
+
+    if (!formData) return <div className={styles.loading}>Carregando dados do perfil...</div>;
 
     return (
         <main className={layoutStyles.main}>

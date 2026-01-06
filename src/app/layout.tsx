@@ -7,6 +7,8 @@ import { SidebarProvider } from "@/context/SidebarContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { SearchProvider } from "@/context/SearchContext";
 
+import { Providers } from "@/components/Providers";
+
 const inter = Lora({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,17 +27,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        <ThemeProvider>
-          <SettingsProvider>
-            <UserProvider>
-              <SidebarProvider>
-                <SearchProvider>
-                  {children}
-                </SearchProvider>
-              </SidebarProvider>
-            </UserProvider>
-          </SettingsProvider>
-        </ThemeProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

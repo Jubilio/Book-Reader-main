@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// NextAuth models
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?
+  role          String    @default("USER") // ADMIN, USER
+  accounts      Account[]
+  sessions      Session[]
+  progress      ReadingProgress[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// Application models
+model Profile {
+  id          Int      @id @default(1)
+  name        String
+  role        String
+  bio         String   @db.Text
+  image       String
+  mission     String   @db.Text
+  testimony   String   @db.Text
+  booksWritten Int     @default(0)
+  livesImpacted String  @default("0")
+  daysPraying   String  @default("0")
+  updatedAt   DateTime @updatedAt
+}
+
+model Book {
+  id          Int      @id @default(autoincrement())
+  title       String
+  author      String
+  description String   @db.Text
+  coverImage  String
+  contentPath String?  // Optional path to HTML file
+  publishedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  progress    ReadingProgress[]
+}
+
+model ReadingProgress {
+  id             String   @id @default(cuid())
+  userId         String
+  bookId         Int
+  scrollPosition Float    @default(0)
+  isFinished     Boolean  @default(false)
+  lastRead       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  book Book @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, bookId])
+}
