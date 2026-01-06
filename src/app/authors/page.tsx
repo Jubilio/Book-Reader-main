@@ -48,6 +48,7 @@ export default function Authors() {
                             width={180}
                             height={180}
                             unoptimized={featuredAuthor.image.startsWith('data:')}
+                            priority
                         />
                         <div>
                             <span className={styles.roleBadge}>

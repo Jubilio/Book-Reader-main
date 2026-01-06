@@ -77,6 +77,7 @@ export default function Header() {
                 width={50}
                 height={50}
                 unoptimized={user.image.startsWith('data:')}
+                priority
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(user.name) + "&background=a67c52&color=fff";

@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { useSession } from "next-auth/react";
 
 interface UserStats {
   booksWritten: number;
@@ -23,6 +24,7 @@ interface UserContextType {
   updateUser: (newUser: Partial<User>, password?: string) => Promise<{ success: boolean; error?: string }>;
   setAdmin: (isAdmin: boolean) => void;
   refreshUser: () => Promise<void>;
+  loading: boolean;
 }
 
 const defaultUser: User = {
@@ -43,30 +45,43 @@ const defaultUser: User = {
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
   const [user, setUser] = useState<User>(defaultUser);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const refreshUser = useCallback(async () => {
+    // Only fetch if session is authenticated
+    if (status !== "authenticated") return;
+
     try {
       const res = await fetch('/api/profile');
       if (res.ok) {
         const data = await res.json();
-        setUser(prev => ({ ...prev, ...data, isAdmin }));
+        const userRole = (session?.user as any)?.role || 'USER';
+        setUser(prev => ({ 
+          ...prev, 
+          ...data, 
+          isAdmin: userRole === 'ADMIN' 
+        }));
       }
     } catch (e) {
       console.error("Failed to fetch profile from backend", e);
+    } finally {
+      setLoading(false);
     }
-  }, [isAdmin]);
+  }, [status, session]);
 
   useEffect(() => {
-    refreshUser();
-    // Also check local storage for admin session persistence (simulated)
-    const adminSession = localStorage.getItem("isAdmin") === "true";
-    if (adminSession) {
-      setIsAdmin(true);
-      setUser(prev => ({ ...prev, isAdmin: true }));
+    if (status === "authenticated") {
+      refreshUser();
+      setIsAdmin((session?.user as any)?.role === 'ADMIN');
+    } else if (status === "unauthenticated") {
+      setUser(defaultUser);
+      setIsAdmin(false);
+      setLoading(false);
     }
-  }, [isAdmin, refreshUser]);
+  }, [status, session, refreshUser]);
 
   const updateUser = async (userData: Partial<User>, password?: string) => {
     try {
@@ -95,7 +110,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser, setAdmin, refreshUser }}>
+    <UserContext.Provider value={{ user, updateUser, setAdmin, refreshUser, loading }}>
       {children}
     </UserContext.Provider>
   );

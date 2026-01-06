@@ -73,6 +73,7 @@ export default function Discover() {
                             className={styles.authorImage}
                             width={100}
                             height={100}
+                            priority
                         />
                         <div className={styles.authorInfo}>
                             <h3>Jubílio Maússe</h3>
