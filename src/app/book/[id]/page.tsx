@@ -1,6 +1,5 @@
 "use client"
 
-import { books } from "@/constants/mockData.mjs"
 import { useParams, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import styles from './book.module.css'
@@ -10,6 +9,8 @@ import { useEffect, useState } from "react"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSettings } from "@/context/SettingsContext"
+import { useSession } from "next-auth/react"
+import { useCallback, useRef } from "react"
 
 export default function BookPage() {
     const { id } = useParams()
@@ -39,29 +40,114 @@ export default function BookPage() {
         setIsClient(true);
     }, []);
 
-    const selectedBook = books.find((book) => String(book.id) === bookId);
+    const [selectedBook, setSelectedBook] = useState<any>(null);
 
-    // Fetch content from external file
+    // Fetch book details from API
+    useEffect(() => {
+        if (isClient && bookId) {
+            setLoading(true);
+            fetch(`/api/books/${bookId}`)
+                .then(res => {
+                    if (!res.ok) throw new Error("Book not found");
+                    return res.json();
+                })
+                .then(data => {
+                    setSelectedBook(data);
+                })
+                .catch(err => {
+                    console.error("Fetch error:", err);
+                    setError("Livro não encontrado ou erro no servidor.");
+                    setLoading(false);
+                });
+        }
+    }, [bookId, isClient]);
+
+    // Fetch content from external file or DB field once book is found
     useEffect(() => {
         if (selectedBook && isClient) {
             setLoading(true);
             setError(null);
-            fetch(`/content/${selectedBook.id}.html`)
-                .then(res => {
-                    if (!res.ok) throw new Error("Content not found");
-                    return res.text();
-                })
-                .then(text => {
-                    setFetchedContent(text);
-                    setLoading(false);
-                })
-                .catch(err => {
-                    console.error("Fetch error:", err);
-                    setError("Não foi possível carregar o conteúdo deste livro.");
-                    setLoading(false);
-                });
+            
+            // Priority: 1. DB Content Field, 2. contentPath, 3. Dynamic path
+            if (selectedBook.content) {
+                setFetchedContent(selectedBook.content);
+                setLoading(false);
+            } else {
+                const contentPath = selectedBook.contentPath || `/content/${selectedBook.id}.html`;
+                
+                fetch(contentPath)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Content not found");
+                        return res.text();
+                    })
+                    .then(text => {
+                        setFetchedContent(text);
+                        setLoading(false);
+                    })
+                    .catch(err => {
+                        console.error("Content fetch error:", err);
+                        setError("Não foi possível carregar o conteúdo deste livro.");
+                        setLoading(false);
+                    });
+            }
         }
     }, [selectedBook, isClient]);
+
+    const { data: session } = useSession();
+    const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Fetch progress from API
+    useEffect(() => {
+        if (session && selectedBook && isClient) {
+            fetch(`/api/progress?bookId=${selectedBook.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.scrollPosition) {
+                        // Delay scroll to ensure content is rendered
+                        setTimeout(() => {
+                            window.scrollTo({
+                                top: data.scrollPosition,
+                                behavior: 'smooth'
+                            });
+                        }, 500);
+                    }
+                })
+                .catch(err => console.error("Failed to load progress", err));
+        }
+    }, [session, selectedBook, isClient]);
+
+    // Handle scroll and save progress
+    const handleScroll = useCallback(() => {
+        if (!session || !selectedBook) return;
+
+        if (saveTimeoutRef.current) {
+            clearTimeout(saveTimeoutRef.current);
+        }
+
+        saveTimeoutRef.current = setTimeout(() => {
+            const scrollPos = window.scrollY;
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const isFinished = scrollPos > totalHeight * 0.95;
+
+            fetch('/api/progress', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    bookId: selectedBook.id,
+                    scrollPosition: scrollPos,
+                    isFinished
+                })
+            }).catch(err => console.error("Failed to save progress", err));
+        }, 2000); // Save every 2 seconds of inactivity
+    }, [session, selectedBook]);
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+        };
+    }, [handleScroll]);
 
     const notify = () => toast.success("Suas alterações foram salvas!", {
         position: "bottom-center",
@@ -98,6 +184,27 @@ export default function BookPage() {
         }
     }, [isClient, selectedBook, setDom])
 
+    const handleShare = async () => {
+        if (!selectedBook) return;
+
+        const shareData = {
+            title: selectedBook.title,
+            text: `Estou lendo "${selectedBook.title}" no Book Reader!`,
+            url: window.location.href,
+        };
+
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(window.location.href);
+                toast.success("Link copiado para a área de transferência!");
+            }
+        } catch (err) {
+            console.error("Error sharing:", err);
+        }
+    };
+
     if (!isClient) return null; // Avoid hydration mismatch
     
     if (!selectedBook) {
@@ -130,7 +237,7 @@ export default function BookPage() {
                     </button>
                     
                     <div className={styles.actions}>
-                        <button className={styles.iconButton} title="Compartilhar"><i className="fas fa-share-alt"></i></button>
+                        <button className={styles.iconButton} title="Compartilhar" onClick={handleShare}><i className="fas fa-share-alt"></i></button>
                         <button className={styles.iconButton} title="Configurações" onClick={() => router.push('/settings')}><i className="fas fa-cog"></i></button>
                         <button className={styles.saveButton} onClick={handleSave}>Salvar Alterações</button>
                     </div>

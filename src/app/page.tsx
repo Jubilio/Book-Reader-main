@@ -2,7 +2,6 @@
 import Header from "@/components/Header";
 import styles from "./page.module.css";
 import SideBar from "@/components/SideBar";
-import { books } from '@/constants/mockData.mjs'
 import { motion } from 'framer-motion'
 import BookCard from "@/components/BookCard";
 import { useSearchParams } from "next/navigation";
@@ -11,8 +10,37 @@ import Link from "next/link";
 
 import { useSearch } from "@/context/SearchContext";
 
+import { BookCardSkeleton } from "@/components/Skeleton";
+
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+    description: string;
+    coverImage: string;
+}
+
 function BookGrid() {
   const { searchQuery: search } = useSearch();
+  const [books, setBooks] = useState<Book[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchBooks() {
+        try {
+            const res = await fetch('/api/books');
+            if (res.ok) {
+                const data = await res.json();
+                setBooks(data);
+            }
+        } catch (error) {
+            console.error("Failed to fetch books", error);
+        } finally {
+            setLoading(false);
+        }
+    }
+    fetchBooks();
+  }, []);
 
   const filteredBooks = useMemo(() => {
     return books.filter(book => 
@@ -20,7 +48,7 @@ function BookGrid() {
         book.author.toLowerCase().includes(search.toLowerCase()) ||
         book.description.toLowerCase().includes(search.toLowerCase())
     );
-  }, [search]);
+  }, [books, search]);
 
   return (
     <section>
@@ -37,7 +65,7 @@ function BookGrid() {
             className={styles.bookGrid}
             initial="hidden"
             animate="show"
-            key={search} 
+            key={search + loading} 
             variants={{
                 hidden: { opacity: 0 },
                 show: {
@@ -49,7 +77,11 @@ function BookGrid() {
             }}
         >
         {
-            filteredBooks.length > 0 ? (
+            loading ? (
+                Array.from({ length: 6 }).map((_, i) => (
+                    <BookCardSkeleton key={i} />
+                ))
+            ) : filteredBooks.length > 0 ? (
                 filteredBooks.map((book, index) => (
                     <Link href={`/book/${book.id}`} key={book.id} className={styles.link}>
                         <motion.div variants={{
@@ -58,7 +90,7 @@ function BookGrid() {
                         }}>
                             <BookCard
                                 title={book.title}
-                                coverImage={book.image}
+                                coverImage={book.coverImage}
                                 description={book.description}
                                 priority={index < 6}
                             />

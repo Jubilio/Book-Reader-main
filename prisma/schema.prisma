@@ -78,6 +78,7 @@ model Book {
   description String   @db.Text
   coverImage  String
   contentPath String?  // Optional path to HTML file
+  content     String?  @db.Text
   publishedAt DateTime @default(now())
   updatedAt   DateTime @updatedAt
   progress    ReadingProgress[]

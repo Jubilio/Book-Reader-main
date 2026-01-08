@@ -7,6 +7,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import { Editor } from "reactjs-editor";
+import { toast } from 'react-toastify';
 
 export default function AdminPage() {
     const { data: session, status } = useSession();
@@ -15,26 +17,103 @@ export default function AdminPage() {
     const [error, setError] = useState("");
     const [formData, setFormData] = useState<any>(null);
     const [isSaving, setIsSaving] = useState(false);
+    
+    // Books management state
+    const [books, setBooks] = useState<any[]>([]);
+    const [isEditingBook, setIsEditingBook] = useState(false);
+    const [currentBook, setCurrentBook] = useState<any>(null);
+    const [isRefreshingBooks, setIsRefreshingBooks] = useState(false);
+
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    // Fetch profile data when authenticated
+    // Fetch profile and books data
     useEffect(() => {
         if (status === "authenticated") {
-            fetch('/api/profile')
-                .then(res => res.json())
-                .then(data => {
-                    setFormData({
-                        ...data,
-                        stats: {
-                            booksWritten: data.booksWritten,
-                            livesImpacted: data.livesImpacted,
-                            daysPraying: data.daysPraying
-                        }
-                    });
-                })
-                .catch(err => console.error("Error fetching profile:", err));
+            fetchProfile();
+            fetchBooks();
         }
     }, [status]);
+
+    const fetchProfile = async () => {
+        try {
+            const res = await fetch('/api/profile');
+            const data = await res.json();
+            setFormData({
+                ...data,
+                stats: {
+                    booksWritten: data.booksWritten,
+                    livesImpacted: data.livesImpacted,
+                    daysPraying: data.daysPraying
+                }
+            });
+        } catch (err) {
+            console.error("Error fetching profile:", err);
+        }
+    };
+
+    const fetchBooks = async () => {
+        setIsRefreshingBooks(true);
+        try {
+            const res = await fetch('/api/books');
+            const data = await res.json();
+            setBooks(data);
+        } catch (err) {
+            console.error("Error fetching books:", err);
+        } finally {
+            setIsRefreshingBooks(false);
+        }
+    };
+
+    const handleBookDelete = async (id: number) => {
+        if (!confirm("Tem certeza que deseja excluir este livro?")) return;
+        
+        try {
+            const res = await fetch(`/api/books/${id}`, { method: 'DELETE' });
+            if (res.ok) {
+                fetchBooks();
+            } else {
+                alert("Erro ao excluir livro.");
+            }
+        } catch (err) {
+            alert("Erro de conexão.");
+        }
+    };
+
+    const handleBookSave = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const method = currentBook.id ? 'PUT' : 'POST';
+        const url = currentBook.id ? `/api/books/${currentBook.id}` : '/api/books';
+
+        try {
+            const res = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(currentBook)
+            });
+
+            if (res.ok) {
+                setIsEditingBook(false);
+                fetchBooks();
+            } else {
+                alert("Erro ao salvar livro.");
+            }
+        } catch (err) {
+            alert("Erro de conexão.");
+        }
+    };
+
+    const handleImportHTML = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const content = event.target?.result as string;
+                setCurrentBook({ ...currentBook, content });
+                toast.success("Conteúdo importado com sucesso!");
+            };
+            reader.readAsText(file);
+        }
+    };
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -302,9 +381,159 @@ export default function AdminPage() {
                                             className={styles.input} 
                                         />
                                     </div>
+                                </div >
+                            </section>
+
+                            <section className={styles.card}>
+                                <div className={`${styles.adminHeader} ${styles.mb1} ${styles.borderNone}`}>
+                                    <h2 className={`${styles.cardTitle} ${styles.mb0}`}><i className="fas fa-book"></i> Gerenciar Livros</h2>
+                                    <button 
+                                        className={styles.uploadBtn} 
+                                        onClick={() => {
+                                            setCurrentBook({ title: '', author: '', description: '', coverImage: '', contentPath: '' });
+                                            setIsEditingBook(true);
+                                        }}
+                                    >
+                                        <i className="fas fa-plus"></i> Novo Livro
+                                    </button>
+                                </div>
+
+                                <div className={styles.bookListContainer}>
+                                    <table className={styles.bookList}>
+                                        <thead>
+                                            <tr>
+                                                <th>Capa</th>
+                                                <th>Título</th>
+                                                <th>Autor</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {books.map((book: any) => (
+                                                <tr key={book.id}>
+                                                    <td>
+                                                        <Image src={book.coverImage} alt={book.title} width={40} height={60} className={styles.bookThumb} unoptimized />
+                                                    </td>
+                                                    <td>{book.title}</td>
+                                                    <td>{book.author}</td>
+                                                    <td>
+                                                        <div className={styles.bookActions}>
+                                                            <button 
+                                                                className={styles.btnIcon} 
+                                                                onClick={() => {
+                                                                    setCurrentBook(book);
+                                                                    setIsEditingBook(true);
+                                                                }}
+                                                                title="Editar"
+                                                            >
+                                                                <i className="fas fa-edit"></i>
+                                                            </button>
+                                                            <button 
+                                                                className={`${styles.btnIcon} ${styles.btnDelete}`} 
+                                                                onClick={() => handleBookDelete(book.id)}
+                                                                title="Excluir"
+                                                            >
+                                                                <i className="fas fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </section>
                         </div>
+
+                        {/* Book Edit Modal */}
+                        {isEditingBook && (
+                            <>
+                                <div className={styles.modalOverlay} onClick={() => setIsEditingBook(false)} />
+                                <div className={styles.editModal}>
+                                    <h2 className={styles.cardTitle}>
+                                        <i className="fas fa-book-medical"></i> 
+                                        {currentBook.id ? 'Editar Livro' : 'Adicionar Novo Livro'}
+                                    </h2>
+                                    <form onSubmit={handleBookSave} className={styles.inputs}>
+                                        <div className={styles.field}>
+                                            <label htmlFor="bookTitle" className={styles.label}>Título</label>
+                                            <input 
+                                                id="bookTitle"
+                                                type="text" 
+                                                className={styles.input} 
+                                                value={currentBook.title}
+                                                onChange={e => setCurrentBook({...currentBook, title: e.target.value})}
+                                                placeholder="Título do Livro"
+                                                required
+                                            />
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label htmlFor="bookAuthor" className={styles.label}>Autor</label>
+                                            <input 
+                                                id="bookAuthor"
+                                                type="text" 
+                                                className={styles.input} 
+                                                value={currentBook.author}
+                                                onChange={e => setCurrentBook({...currentBook, author: e.target.value})}
+                                                placeholder="Nome do Autor"
+                                                required
+                                            />
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label htmlFor="bookCover" className={styles.label}>URL da Capa</label>
+                                            <input 
+                                                id="bookCover"
+                                                type="text" 
+                                                className={styles.input} 
+                                                value={currentBook.coverImage}
+                                                onChange={e => setCurrentBook({...currentBook, coverImage: e.target.value})}
+                                                placeholder="https://exemplo.com/capa.jpg"
+                                                required
+                                            />
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label htmlFor="bookDesc" className={styles.label}>Descrição</label>
+                                            <textarea 
+                                                id="bookDesc"
+                                                className={styles.textarea} 
+                                                value={currentBook.description}
+                                                onChange={e => setCurrentBook({...currentBook, description: e.target.value})}
+                                                placeholder="Breve descrição do livro..."
+                                                required
+                                            />
+                                        </div>
+                                        <div className={styles.field}>
+                                            <label className={styles.label}>Conteúdo do Livro</label>
+                                            <input 
+                                                type="file" 
+                                                accept=".html" 
+                                                id="importHtml"
+                                                className={styles.fileInput}
+                                                onChange={handleImportHTML}
+                                                aria-label="Importar conteúdo de arquivo HTML"
+                                            />
+                                            <button 
+                                                type="button" 
+                                                className={styles.importBtn}
+                                                onClick={() => document.getElementById('importHtml')?.click()}
+                                            >
+                                                <i className="fas fa-file-import"></i> Importar de arquivo HTML
+                                            </button>
+                                            <div className={styles.editorContainer}>
+                                                <Editor 
+                                                    htmlContent={currentBook.content || ''}
+                                                    onChange={(html: string) => setCurrentBook({ ...currentBook, content: html })}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className={`${styles.actionRow} ${styles.mt2} ${styles.p1_0} ${styles.borderNone} ${styles.boxShadowNone} ${styles.static}`}>
+                                            <button type="button" onClick={() => setIsEditingBook(false)} className={styles.logoutBtn}>Cancelar</button>
+                                            <button type="submit" className={styles.saveBtn}>Salvar Livro</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </>
+                        )}
 
                         <div className={styles.actionRow}>
                             <p className={styles.saveStatus}>
@@ -314,6 +543,7 @@ export default function AdminPage() {
                                 onClick={handleSave} 
                                 className={styles.saveBtn}
                                 disabled={isSaving}
+                                title="Salvar todas as alterações do perfil e estatísticas"
                             >
                                 <i className={`fas ${isSaving ? 'fa-spinner fa-spin' : 'fa-save'}`}></i>
                                 Salvar Alterações

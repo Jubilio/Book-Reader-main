@@ -81,20 +81,28 @@ async function main() {
     const mockDataPath = path.join(process.cwd(), 'src', 'constants', 'mockData.mjs');
     if (fs.existsSync(mockDataPath)) {
         const content = fs.readFileSync(mockDataPath, 'utf8');
-        const booksMatch = content.match(/export const books = (\[[\s\S]*?\]);/);
-        if (booksMatch) {
-             // Limpeza básica para converter de MJS string para JSON aproximado
-            let booksJsonStr = booksMatch[1]
-                .replace(/'/g, '"')
-                .replace(/(\w+):/g, '"$1":')
-                .replace(/,(\s*\])/g, '$1');
-            
+        // Extract content between [ and ];
+        const start = content.indexOf('[');
+        const end = content.lastIndexOf(']');
+        
+        if (start !== -1 && end !== -1) {
+            const booksArrayStr = content.substring(start, end + 1);
             try {
-                const books = JSON.parse(booksJsonStr);
+                // Use Function constructor to safely evaluate the array string
+                // We wrap it in parentheses to make it an expression
+                const books = new Function(`return ${booksArrayStr}`)();
+                
+                let count = 0;
                 for (const book of books) {
                     await prisma.book.upsert({
                         where: { id: book.id },
-                        update: {},
+                        update: {
+                            title: book.title,
+                            author: book.author,
+                            description: book.description,
+                            coverImage: book.image,
+                            contentPath: `/content/${book.id}.html`
+                        },
                         create: {
                             id: book.id,
                             title: book.title,
@@ -104,11 +112,14 @@ async function main() {
                             contentPath: `/content/${book.id}.html`
                         }
                     });
+                    count++;
                 }
-                console.log(`${books.length} livros migrados.`);
+                console.log(`✅ ${count} livros migrados com sucesso.`);
             } catch (e) {
-                console.warn('Falha ao processar mockData.mjs automaticamente:', e.message);
+                console.error('❌ Erro ao processar livros de mockData.mjs:', e.message);
             }
+        } else {
+            console.error('❌ Não foi possível encontrar a array de livros em mockData.mjs');
         }
     }
 

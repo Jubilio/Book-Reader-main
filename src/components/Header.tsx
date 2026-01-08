@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "./Header.module.css";
@@ -15,8 +16,17 @@ export default function Header() {
   const { toggleSidebar } = useSidebar();
   const { theme, toggleTheme } = useTheme();
   const { searchQuery, setSearchQuery } = useSearch();
+  const [localSearch, setLocalSearch] = useState(searchQuery);
 
-  const themeIcon = theme === "dark" ? "fa-moon" : theme === "sepia" ? "fa-palette" : "fa-sun";
+  const themeIcon = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setSearchQuery(localSearch);
+    }, 400);
+
+    return () => clearTimeout(handler);
+  }, [localSearch, setSearchQuery]);
 
   return (
     <header className={styles.header}>
@@ -46,8 +56,8 @@ export default function Header() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={localSearch}
+            onChange={(e) => setLocalSearch(e.target.value)}
           />
         </div>
       </motion.div>
