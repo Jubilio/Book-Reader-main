@@ -21,6 +21,22 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Credenciais inválidas");
         }
 
+        // Check against Environment Variables first
+        const adminEmail = process.env.ADMIN_EMAIL;
+        const adminPassword = process.env.ADMIN_PASSWORD;
+
+        if (adminEmail && adminPassword && 
+            credentials.email === adminEmail && 
+            credentials.password === adminPassword) {
+          return {
+            id: "admin-static-id",
+            name: "Admin",
+            email: adminEmail,
+            role: "ADMIN",
+          };
+        }
+
+        // Fallback to database
         const user = await prisma.user.findUnique({
           where: { email: credentials.email }
         });

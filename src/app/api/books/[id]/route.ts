@@ -23,7 +23,8 @@ export async function GET(
 
         return NextResponse.json(book);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to fetch book' }, { status: 500 });
+        console.error(`CRITICAL ERROR in GET /api/books/${params.id}:`, error);
+        return NextResponse.json({ error: 'Failed to fetch book', details: String(error) }, { status: 500 });
     }
 }
 export async function PUT(

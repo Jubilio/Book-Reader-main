@@ -10,7 +10,8 @@ export async function GET() {
         });
         return NextResponse.json(books);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to fetch books' }, { status: 500 });
+        console.error("CRITICAL ERROR in GET /api/books:", error);
+        return NextResponse.json({ error: 'Failed to fetch books', details: String(error) }, { status: 500 });
     }
 }
 export async function POST(request: Request) {

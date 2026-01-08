@@ -40,11 +40,7 @@ export default function SideBar() {
             icon: "fa-circle-question",
             href: "/support"
         },
-        {
-          title: "Admin",
-          icon: "fa-user-shield",
-          href: "/admin"
-        }
+        // Admin link removed for security (access via URL only)
     ]
 
   return (

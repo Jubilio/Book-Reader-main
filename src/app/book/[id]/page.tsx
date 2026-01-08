@@ -206,6 +206,34 @@ export default function BookPage() {
     };
 
     if (!isClient) return null; // Avoid hydration mismatch
+
+    if (loading) {
+        return (
+            <div className={styles.pageWrapper}>
+                <div className={styles.main}>
+                    <div className={styles.loader}>
+                        <i className={`fas fa-spinner fa-spin ${styles.loaderIcon}`}></i>
+                        <p>Carregando conteúdo...</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className={styles.pageWrapper}>
+                <div className={styles.main}>
+                    <div className={styles.errorContainer}>
+                        <i className={`fas fa-exclamation-circle ${styles.errorIcon}`}></i>
+                        <p>{error}</p>
+                        <button onClick={() => window.location.reload()} className={`${styles.backButton} ${styles.errorButton}`}>Tentar Novamente</button>
+                        <button onClick={() => router.push('/')} className={`${styles.backButton} ${styles.mt2}`}>Voltar para Biblioteca</button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
     
     if (!selectedBook) {
         return (
@@ -250,33 +278,20 @@ export default function BookPage() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                 >
-                    {loading ? (
-                        <div className={styles.loader}>
-                            <i className={`fas fa-spinner fa-spin ${styles.loaderIcon}`}></i>
-                            <p>Carregando conteúdo...</p>
-                        </div>
-                    ) : error ? (
-                        <div className={styles.errorContainer}>
-                            <i className={`fas fa-exclamation-circle ${styles.errorIcon}`}></i>
-                            <p>{error}</p>
-                            <button onClick={() => window.location.reload()} className={`${styles.backButton} ${styles.errorButton}`}>Tentar Novamente</button>
-                        </div>
-                    ) : (
-                        <Editor
-                            key={selectedBook.id}
-                            htmlContent={`
-                                <div class="reader-content-wrapper">
-                                    <div style="text-align: center; margin-bottom: 3rem;">
-                                        <h1 style="font-family: 'Lora', serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); transition: color 0.3s ease;">${selectedBook.title}</h1>
-                                        <span style="font-size: 1.1rem; color: var(--text-secondary); font-style: italic; transition: color 0.3s ease;">Por ${selectedBook.author}</span>
-                                    </div>
-                                    <div style="font-size: ${readerStyles.fontSize}; line-height: ${readerStyles.lineHeight}; color: var(--text-primary); font-family: ${readerStyles.fontFamily}; text-align: ${readerStyles.textAlign}; transition: all 0.3s ease;">
-                                        ${fetchedContent}
-                                    </div>
+                    <Editor
+                        key={selectedBook.id}
+                        htmlContent={`
+                            <div class="reader-content-wrapper">
+                                <div style="text-align: center; margin-bottom: 3rem;">
+                                    <h1 style="font-family: 'Lora', serif; font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); transition: color 0.3s ease;">${selectedBook.title}</h1>
+                                    <span style="font-size: 1.1rem; color: var(--text-secondary); font-style: italic; transition: color 0.3s ease;">Por ${selectedBook.author}</span>
                                 </div>
-                            `}
-                        />
-                    )}
+                                <div style="font-size: ${readerStyles.fontSize}; line-height: ${readerStyles.lineHeight}; color: var(--text-primary); font-family: ${readerStyles.fontFamily}; text-align: ${readerStyles.textAlign}; transition: all 0.3s ease;">
+                                    ${fetchedContent}
+                                </div>
+                            </div>
+                        `}
+                    />
                 </motion.div>
             </div>
             <ToastContainer />

@@ -118,14 +118,30 @@ export default function AdminPage() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
-        const result = await signIn("credentials", {
-            redirect: false,
-            email,
-            password,
-        });
+        console.log("Attempting login..."); // Debug
+        
+        try {
+            const result = await signIn("credentials", {
+                redirect: false,
+                email,
+                password,
+            });
 
-        if (result?.error) {
-            setError("Email ou senha incorretos.");
+            console.log("Login result:", result); // Debug
+
+            if (result?.error) {
+                console.error("Login error:", result.error);
+                setError(result.error); // Show actual error or a generic one if needed
+                toast.error("Erro no login: " + result.error);
+            } else if (result?.ok) {
+                console.log("Login successful, refreshing...");
+                toast.success("Login realizado com sucesso!");
+                // Force a router refresh or fetch to ensure session update
+                window.location.reload(); 
+            }
+        } catch (err) {
+            console.error("Unexpected error:", err);
+            setError("Erro inesperado ao tentar logar.");
         }
     };
 
@@ -217,7 +233,6 @@ export default function AdminPage() {
                                             className={styles.input}
                                             placeholder="admin@bookreader.com"
                                             autoFocus
-                                            required
                                         />
                                     </div>
                                     <div className={styles.inputGroup}>
@@ -228,7 +243,6 @@ export default function AdminPage() {
                                             onChange={(e) => setPassword(e.target.value)}
                                             className={styles.input}
                                             placeholder="Digite sua senha..."
-                                            required
                                         />
                                     </div>
                                     <button type="submit" className={styles.loginButton}>
